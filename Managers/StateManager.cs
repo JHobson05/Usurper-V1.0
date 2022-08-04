@@ -16,7 +16,7 @@ namespace Usurper_V1._0
 
         public void Update(GameTime gt,Game1 g)
         {
-
+            states[selected].Update(gt, g);
         }
 
         public void Draw(Game1 g)

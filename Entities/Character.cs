@@ -25,7 +25,7 @@ namespace Usurper_V1._0
         //This method exists to instantiate enemies.
         public void SetEnemy(double h, int a, int sa, int d, int sd, string Sprite, string name, string type)
         {
-            maxHp = h; atk = a; spAtk = sa; spDef = sd;
+            maxHp = h; atk = a; spAtk = sa; spDef = sd; def = d;
             spriteString = Sprite;
             this.name = name;
             this.type = type;
@@ -45,6 +45,8 @@ namespace Usurper_V1._0
 
         public int Atk { get { return atk; } }
         public int SpAtk { get { return spAtk; } }
+        public int Def { get { return def; } }
+        public int SpDef { get { return spDef; } }
 
     }
 }

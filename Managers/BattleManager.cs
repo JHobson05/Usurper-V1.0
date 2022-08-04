@@ -29,6 +29,14 @@ namespace Usurper_V1._0
             {
                 damage = Math.Round(damage * 1.2);
             }
+            if (attack.AtkType == "atk")
+            {
+                damage = damage / AI.party[Victim].Def;
+            }
+            else
+            {
+                damage = damage / AI.party[Victim].SpDef;
+            }
             AI.party[Victim].takeDamage(damage);
         }
     }

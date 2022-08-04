@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Usurper_V1._0
 {
     public class IcicleRain : Move
@@ -13,6 +14,7 @@ namespace Usurper_V1._0
             type = "Frost";
             spEffect = false;
             basePower = 30;
+            SpriteString = "IcicleRainIcon";
         }
     }
 }

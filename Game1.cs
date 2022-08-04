@@ -16,6 +16,7 @@ namespace Usurper_V1._0
         public int width = 640;
         public static EnemyList enemyList = new EnemyList();
         public Party party;
+        public Texture2D MoveBarSprite;
 
         //States
         public StateManager stateMgr = new StateManager();
@@ -49,6 +50,9 @@ namespace Usurper_V1._0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Font = Content.Load<SpriteFont>("gameFont");
             character1.Sprite = Content.Load<Texture2D>(character1.getSpriteString);
+            character1.move1.SetIconSprite = Content.Load<Texture2D>(character1.move1.SpriteString);
+            character1.move2.SetIconSprite = Content.Load<Texture2D>(character1.move2.SpriteString);
+            MoveBarSprite = Content.Load<Texture2D>("MoveBar");
             // TODO: use this.Content to load your game content here
         }
 
@@ -58,7 +62,7 @@ namespace Usurper_V1._0
                 Exit();
 
             // TODO: Add your update logic here
-
+            stateMgr.Update(gameTime,this);
             base.Update(gameTime);
         }
 
