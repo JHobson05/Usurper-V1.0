@@ -14,6 +14,7 @@ namespace Usurper_V1._0
             def = 5;
             spDef = 5;
             hp = 100;
+            type = "Electric";
         }
     }
 }

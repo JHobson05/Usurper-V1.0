@@ -11,5 +11,6 @@ namespace Usurper_V1._0
         public const int icicleRain = 0;
         public const int lightningJavelin = 1;
         public const int blizzard = 2;
+        public const int mightyShot = 3;
     }
 }

@@ -15,6 +15,9 @@ namespace Usurper_V1._0
         protected bool Alive;
         protected string type, name, spriteString;
         protected Vector2 cPosition= new Vector2(10, 50);
+        public Move move1;
+        public Move move2;
+        protected List<Move> Moves;
         public Texture2D Sprite{get; set;}
         //Constructor
         public Character(int ID)
@@ -22,20 +25,18 @@ namespace Usurper_V1._0
             this.ID = ID;
         }
 
-        //This method exists to instantiate enemies.
-        public void SetEnemy(double h, int a, int sa, int d, int sd, string Sprite, string name, string type)
-        {
-            maxHp = h; atk = a; spAtk = sa; spDef = sd; def = d;
-            spriteString = Sprite;
-            this.name = name;
-            this.type = type;
-        }
-
         public double HP{ get { return hp; }}
         public double MaxHp { get { return maxHp; } }
         public void takeDamage(double value)
         {
             hp = hp - value;
+        }
+
+        public Move UseMove(int Index)
+        {
+            Move move;
+            move = Moves[Index];
+            return move;
         }
         public string getSpriteString{get { return spriteString; } }
         public Vector2 getPosition{ get { return cPosition; } }

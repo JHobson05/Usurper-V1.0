@@ -10,7 +10,10 @@ namespace Usurper_V1._0
     {
         BattleManager bMgr;
         MouseState mState;
-        bool mReleased;
+        Button Move1;
+        bool mReleased,Attack;
+        Vector2 B1;
+        Vector2 B2;
         public BattleState (EnemyList list,Game1 g) : base(StateID.battle)
         {
 
@@ -21,15 +24,15 @@ namespace Usurper_V1._0
         public override void Initialize(Game1 g)
         {
             mReleased = true;
+            B1 = new Vector2(10, 200);
+            Move1 = new Button(B1, 32, 32);
+            B2 = new Vector2(42, 200);
         }
 
         public override void Update(GameTime gt, Game1 g)
         {
             mState = Mouse.GetState();
-            if(mState.LeftButton == ButtonState.Pressed && mReleased)
-            {
-                //if(mState.Position.ToVector2)
-            }
+            Attack =Move1.checkPressed(mState);
         }
 
         public override void Draw(Game1 g)
@@ -42,6 +45,10 @@ namespace Usurper_V1._0
             g._spriteBatch.Draw(g.MoveBarSprite, new Vector2(9,199),Color.White);
             g._spriteBatch.Draw(g.character1.move1.GetIconSprite, new Vector2(10,200), Color.White );
             g._spriteBatch.Draw(g.character1.move2.GetIconSprite, new Vector2(42, 200), Color.White);
+            if (Attack)
+            {
+                g._spriteBatch.DrawString(g.Font, "Success", new Vector2(100, 0), Color.White);
+            }
             g._spriteBatch.End();
         }
     }

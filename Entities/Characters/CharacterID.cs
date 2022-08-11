@@ -12,5 +12,9 @@ namespace Usurper_V1._0
         public const int LightningWizard = 2;
         public const int LightningKnight = 3;
         public const int Enemy = 4;
+        public const int FootSoldier = 5;
+        public const int Archer = 6;
+        public const int Anchor = 7;
+        public const int Golem = 8;
     }
 }

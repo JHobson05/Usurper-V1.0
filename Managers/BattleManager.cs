@@ -14,8 +14,9 @@ namespace Usurper_V1._0
             AI = e;
         }
 
-        public void DamageCalculator(int Attacker,Move attack,int Victim)
+        public void DamageCalculator(int Attacker,int Index,int Victim)
         {
+            Move attack = party.party[Attacker].UseMove(Index);
             double damage;
             if(attack.AtkType == "atk")
             {
