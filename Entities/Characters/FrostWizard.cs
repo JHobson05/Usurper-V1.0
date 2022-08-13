@@ -7,7 +7,6 @@ namespace Usurper_V1._0
     public class FrostWizard : Character
     {
         //The constructor for this class sets all the properties inherited by the character class
-
         public FrostWizard () : base(CharacterID.FrostWizard)
         {
             atk = 5;
@@ -18,8 +17,8 @@ namespace Usurper_V1._0
             spriteString = "pixil-frame-0";
             name = "Joe";
             type = "Frost";
-            move1 = new IcicleRain();
-            move2 = new Blizzard();
+            //move1 = new IcicleRain();
+            //move2 = new Blizzard();
         }
         
     }

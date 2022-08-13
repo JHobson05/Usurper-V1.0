@@ -14,7 +14,8 @@ namespace Usurper_V1._0
         public LightningKnight character2;
         public int Height = 360;
         public int width = 640;
-        public static EnemyList enemyList = new EnemyList();
+        public EnemyList enemyList = new EnemyList();
+        public MoveList moveList = new MoveList();
         public Party party;
         public Texture2D MoveBarSprite;
 
@@ -39,7 +40,7 @@ namespace Usurper_V1._0
             character1 = new FrostWizard();
             character2 = new LightningKnight();
             party = new Party(character1,character2);
-            battleState = new BattleState(enemyList, this);
+            battleState = new BattleState(enemyList, this,moveList);
             stateMgr.Add(battleState,this);
             stateMgr.Set(battleState);
             base.Initialize();
@@ -50,8 +51,9 @@ namespace Usurper_V1._0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Font = Content.Load<SpriteFont>("gameFont");
             character1.Sprite = Content.Load<Texture2D>(character1.getSpriteString);
-            character1.move1.SetIconSprite = Content.Load<Texture2D>(character1.move1.SpriteString);
-            character1.move2.SetIconSprite = Content.Load<Texture2D>(character1.move2.SpriteString);
+            moveList.Moves[0].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[0].SpriteString);
+            moveList.Moves[1].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[1].SpriteString);
+            enemyList.enemyList[1].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             MoveBarSprite = Content.Load<Texture2D>("MoveBar");
             // TODO: use this.Content to load your game content here
         }
