@@ -14,10 +14,14 @@ namespace Usurper_V1._0
             AI = e;
         }
 
-        public void DamageCalculator(int Attacker,int Index,int Victim,MoveList movelist)
+        public void playerAttackCalculator(int Attacker,int Index,int Victim,MoveList movelist)
         {
-            Move attack = movelist.Moves[0];
+            Move attack = movelist.Moves[Index];
             double damage;
+            if (AI.party[Victim].HP <= 0)
+            {
+                return;
+            }
             if(attack.AtkType == "atk")
             {
                 damage = attack.BasePower * party.party[Attacker].Atk;
@@ -38,7 +42,35 @@ namespace Usurper_V1._0
             {
                 damage = damage / AI.party[Victim].SpDef;
             }
+            
             AI.party[Victim].takeDamage(damage);
+        }
+
+        public void AIAttackCalculator(int Attacker, int Index, int Victim, MoveList movelist)
+        {
+            Move attack = movelist.Moves[Index];
+            double damage;
+            if (attack.AtkType == "atk")
+            {
+                damage = attack.BasePower * AI.party[Attacker].Atk;
+            }
+            else
+            {
+                damage = attack.BasePower * AI.party[Attacker].SpAtk;
+            }
+            if (attack.Type == AI.party[Attacker].Type)
+            {
+                damage = Math.Round(damage * 1.2);
+            }
+            if (attack.AtkType == "atk")
+            {
+                damage = damage / party.party[Victim].Def;
+            }
+            else
+            {
+                damage = damage / party.party[Victim].SpDef;
+            }
+            party.party[Victim].takeDamage(damage);
         }
     }
 }

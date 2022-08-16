@@ -9,15 +9,15 @@ namespace Usurper_V1._0
     public class Button
     {
         Vector2 position,sPosition;
-        private int length, height,moveID;
-        public Button(Vector2 Position, int length, int height, int moveID)
+        private int length, height,ID;
+        public Button(Vector2 Position, int length, int height, int ID)
         {
             position = Position;
             this.length = length;
             this.height = height;
             sPosition.X = Position.X + length;
             sPosition.Y = Position.Y + height;
-            this.moveID = moveID;
+            this.ID = ID;
         }
 
         public Boolean checkPressed (MouseState mState)
@@ -37,7 +37,7 @@ namespace Usurper_V1._0
 
         public int returnID()
         {
-            return moveID;
+            return ID;
         }
     }
 }
