@@ -71,6 +71,10 @@ namespace Usurper_V1._0
                 damage = damage / party.party[Victim].SpDef;
             }
             party.party[Victim].takeDamage(damage);
+            if (party.party[Victim].HP < 0)
+            {
+                party.party[Victim].killCharacter();
+            }
         }
     }
 }

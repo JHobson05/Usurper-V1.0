@@ -15,13 +15,13 @@ namespace Usurper_V1._0
         protected bool Alive;
         protected string type, name, spriteString;
         protected Vector2 cPosition;
-        //public Move move1;
-        //public Move move2;
+        public int[] Moves = new int[4];
         public Texture2D Sprite{get; set;}
         //Constructor
         public Character(int ID)
         {
             this.ID = ID;
+            Alive = true;
         }
 
         public double HP{ get { return hp; }}
@@ -42,6 +42,11 @@ namespace Usurper_V1._0
         public void setPosition(Vector2 V)
         {
             cPosition = V;
+        }
+        public void killCharacter()
+        {
+            hp = 0;
+            Alive = false;
         }
 
         public string Name{ get { return name; } }

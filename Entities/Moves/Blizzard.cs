@@ -12,7 +12,7 @@ namespace Usurper_V1._0
             atkType = "spAtk";
             type = "Frost";
             spEffect = true;
-            basePower = 25;
+            basePower = 20;
             spriteString = "BlizzardIcon";
         }
     }

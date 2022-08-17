@@ -17,8 +17,8 @@ namespace Usurper_V1._0
             spriteString = "pixil-frame-0";
             name = "Joe";
             type = "Frost";
-            //move1 = new IcicleRain();
-            //move2 = new Blizzard();
+            Moves[0] = 0;
+            Moves[1] = 1;
         }
         
     }
