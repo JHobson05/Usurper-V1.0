@@ -17,6 +17,8 @@ namespace Usurper_V1._0
             name = "Archer";
             type = "Normal";
             Moves[0] = 2;
+            Moves[1] = 4;
+            Moves[2] = 5;
         }
     }
 }

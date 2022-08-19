@@ -7,11 +7,19 @@ namespace Usurper_V1._0
     public class BattleManager
     {
         Party party,AI;
+        Random random = new Random();
 
         public BattleManager( Party p, Party e)
         {
             party = p;
             AI = e;
+        }
+
+        public void EasyAIMove(int Attacker,MoveList movelist)
+        {
+            int temp = random.Next(0,3);
+            int MoveID = AI.party[Attacker].Moves[temp];
+            AIAttackCalculator(Attacker, MoveID, 0, movelist);
         }
 
         public void playerAttackCalculator(int Attacker,int Index,int Victim,MoveList movelist)

@@ -14,16 +14,22 @@ namespace Usurper_V1._0
         private IcicleRain icicleRain;
         private Blizzard blizzard;
         private MightyShot mightyShot;
+        private Barrage barrage;
+        private Gut gut;
         public List<Move> Moves;
         public MoveList()
         {
             icicleRain = new IcicleRain();
             blizzard = new Blizzard();
             mightyShot = new MightyShot();
+            barrage = new Barrage();
+            gut = new Gut();
             Moves = new List<Move>();
             Moves.Add(icicleRain);
             Moves.Add(blizzard);
             Moves.Add(mightyShot);
+            Moves.Add(barrage);
+            Moves.Add(gut);
         }
 
 

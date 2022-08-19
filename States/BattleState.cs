@@ -12,7 +12,7 @@ namespace Usurper_V1._0
         MoveList moveList;
         MouseState mState;
         Button Move1,Move2,Enemy;
-        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased;
+        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn;
         Vector2 B1, B2, B3,B4;
         int cCharacter, cEnemy,moveIndex;
         public BattleState (EnemyList list,Game1 g,MoveList moveList) : base(StateID.battle)
@@ -26,6 +26,7 @@ namespace Usurper_V1._0
         public override void Initialize(Game1 g)
         {
             Attack = false;
+            enemyturn = false;
             cCharacter = 0;
             mReleased = true;
             B1 = new Vector2(1, 327);
@@ -64,6 +65,9 @@ namespace Usurper_V1._0
                 {
                     bMgr.playerAttackCalculator(0, moveIndex, cEnemy, moveList);
                     moveChosen = false;
+                    enemyturn = true;
+                    bMgr.EasyAIMove(1, moveList);
+                    enemyturn = false;
                 }
             }
         }
@@ -80,6 +84,10 @@ namespace Usurper_V1._0
             if (!moveChosen)
             {
                 g._spriteBatch.DrawString(g.Font, "Select a move!", new Vector2(100, 400), Color.White);
+            }
+            if (enemyturn)
+            {
+                g._spriteBatch.DrawString(g.Font, "The enemy is about to use a turn!", new Vector2(100, 400), Color.White);
             }
             g._spriteBatch.End();
         }
