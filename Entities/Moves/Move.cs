@@ -8,8 +8,7 @@ namespace Usurper_V1._0
     public abstract class Move
     {
         //This is the superclass for the move class type. 
-        protected string atkType, spriteString;
-        protected string type;
+        protected string atkType, spriteString, type, name;
         protected int basePower,ID;
         protected bool spEffect;
         protected Texture2D IconSprite;
@@ -30,5 +29,6 @@ namespace Usurper_V1._0
         }
         public Texture2D GetIconSprite { get { return IconSprite; } }
         public Texture2D SetIconSprite { set { IconSprite = value; } }
+        public string Name { get { return name; } }
     }
 }

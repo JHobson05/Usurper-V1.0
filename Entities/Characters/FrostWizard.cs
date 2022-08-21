@@ -13,7 +13,7 @@ namespace Usurper_V1._0
             spAtk = 8;
             def = 5;
             spDef =5;
-            maxHp = 100; hp = maxHp;
+            maxHp = 200; hp = maxHp;
             spriteString = "pixil-frame-0";
             name = "Joe";
             type = "Frost";

@@ -13,6 +13,7 @@ namespace Usurper_V1._0
             atkType = "spAtk";
             type = "normal";
             spEffect = false;
+            name = "Mighty Shot";
         }
     }
 }

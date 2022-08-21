@@ -14,6 +14,7 @@ namespace Usurper_V1._0
             spEffect = true;
             basePower = 20;
             spriteString = "BlizzardIcon";
+            name = "Blizzard";
         }
     }
 }

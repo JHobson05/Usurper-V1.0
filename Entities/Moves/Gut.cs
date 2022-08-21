@@ -13,6 +13,7 @@ namespace Usurper_V1._0
             atkType = "atk";
             type = "normal";
             spEffect = false;
+            name = "Gut";
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Usurper_V1._0
             spEffect = false;
             basePower = 30;
             SpriteString = "IcicleRainIcon";
+            name = "Icicle Rain";
         }
     }
 }

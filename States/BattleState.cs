@@ -12,9 +12,10 @@ namespace Usurper_V1._0
         MoveList moveList;
         MouseState mState;
         Button Move1,Move2,Enemy;
-        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn;
+        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn,gPause;
         Vector2 B1, B2, B3,B4;
-        int cCharacter, cEnemy,moveIndex;
+        int cCharacter, cEnemy,moveIndex,eMove;
+        float timer;
         public BattleState (EnemyList list,Game1 g,MoveList moveList) : base(StateID.battle)
         {
             this.moveList = moveList;
@@ -29,6 +30,7 @@ namespace Usurper_V1._0
             enemyturn = false;
             cCharacter = 0;
             mReleased = true;
+            eMove = 0;
             B1 = new Vector2(1, 327);
             Move1 = new Button(B1, 32, 32,0);
             B2 = new Vector2(33, 327);
@@ -42,32 +44,50 @@ namespace Usurper_V1._0
 
         public override void Update(GameTime gt, Game1 g)
         {
-            mState = Mouse.GetState();
-            // This if statement is used to ensure that things are only registered as one click when the mouse is held down.
-            if(mState.LeftButton == ButtonState.Released)
+            if (!gPause)
             {
-                mReleased = true;
-            }
-            if ((mState.LeftButton == ButtonState.Pressed) && mReleased)
-            {
-                mReleased = false;
-                PlayerMove();
-                if (enemySelect)
+                mState = Mouse.GetState();
+                // This if statement is used to ensure that things are only registered as one click when the mouse is held down.
+                if (mState.LeftButton == ButtonState.Released)
                 {
-                    if (Enemy.checkPressed(mState))
+                    mReleased = true;
+                }
+                if (enemyturn)
+                {
+                    eMove = bMgr.EasyAIMove(1, moveList);
+                    enemyturn = false;
+                    moveChosen = false;
+                }
+                if ((mState.LeftButton == ButtonState.Pressed) && mReleased)
+                {
+                    mReleased = false;
+                    PlayerMove();
+                    if (enemySelect)
                     {
-                        enemyChosen = true;
-                        if (enemyChosen) cEnemy = 1;
+                        if (Enemy.checkPressed(mState))
+                        {
+                            enemyChosen = true;
+                            if (enemyChosen) cEnemy = 1;
+                        }
+                    }
+
+                    if (enemyChosen && Attack && moveChosen)
+                    {
+                        bMgr.playerAttackCalculator(0, moveIndex, cEnemy, moveList);
+                        enemyturn = true;
+                        gPause = true;
+                        timer = 0;
+                        //eMove = bMgr.EasyAIMove(1, moveList);
+                        //enemyturn = false;
                     }
                 }
-
-                if(enemyChosen && Attack && moveChosen)
+            }
+            else
+            {
+                timer += (float)gt.ElapsedGameTime.TotalMilliseconds;
+                if(timer > 2500)
                 {
-                    bMgr.playerAttackCalculator(0, moveIndex, cEnemy, moveList);
-                    moveChosen = false;
-                    enemyturn = true;
-                    bMgr.EasyAIMove(1, moveList);
-                    enemyturn = false;
+                    gPause = false;
                 }
             }
         }
@@ -83,11 +103,11 @@ namespace Usurper_V1._0
             }
             if (!moveChosen)
             {
-                g._spriteBatch.DrawString(g.Font, "Select a move!", new Vector2(100, 400), Color.White);
+                g._spriteBatch.DrawString(g.Font, "Select a move!", new Vector2(100, 100), Color.White);
             }
             if (enemyturn)
             {
-                g._spriteBatch.DrawString(g.Font, "The enemy is about to use a turn!", new Vector2(100, 400), Color.White);
+                g._spriteBatch.DrawString(g.Font, "The enemy is about to attack", new Vector2(0, 200), Color.White);
             }
             g._spriteBatch.End();
         }

@@ -13,7 +13,7 @@ namespace Usurper_V1._0
             type = "normal";
             atkType = "spAtk";
             spEffect = false;
-
+            name = "Barrage";
         }
     }
 }

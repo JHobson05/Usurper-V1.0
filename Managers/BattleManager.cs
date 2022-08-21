@@ -15,11 +15,13 @@ namespace Usurper_V1._0
             AI = e;
         }
 
-        public void EasyAIMove(int Attacker,MoveList movelist)
+        //This method is a function as the integer returned is used to figure out what type of move was used by the AI.
+        public int EasyAIMove(int Attacker,MoveList movelist)
         {
             int temp = random.Next(0,3);
             int MoveID = AI.party[Attacker].Moves[temp];
             AIAttackCalculator(Attacker, MoveID, 0, movelist);
+            return MoveID;
         }
 
         public void playerAttackCalculator(int Attacker,int Index,int Victim,MoveList movelist)
