@@ -8,7 +8,6 @@ namespace Usurper_V1._0
     {
         public Barrage() : base(MoveID.barrage)
         {
-            this.ID = MoveID.barrage;
             basePower = 35;
             type = "normal";
             atkType = "spAtk";

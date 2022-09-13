@@ -15,7 +15,7 @@ namespace Usurper_V1._0
 
         public Move(int ID)
         {
-
+            this.ID = ID;
         }
 
         public int BasePower { get { return basePower; } }

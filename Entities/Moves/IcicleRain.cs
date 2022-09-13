@@ -9,12 +9,11 @@ namespace Usurper_V1._0
     {
         public IcicleRain(): base(MoveID.icicleRain)
         {
-            this.ID = MoveID.icicleRain;
             atkType = "atk";
             type = "Frost";
             spEffect = false;
             basePower = 30;
-            SpriteString = "IcicleRainIcon";
+            spriteString = "IcicleRainIcon";
             name = "Icicle Rain";
         }
     }

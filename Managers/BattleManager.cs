@@ -18,7 +18,7 @@ namespace Usurper_V1._0
         //This method is a function as the integer returned is used to figure out what type of move was used by the AI.
         public int EasyAIMove(int Attacker,MoveList movelist)
         {
-            int temp = random.Next(0,3);
+            int temp = random.Next(0,4);
             int MoveID = AI.party[Attacker].Moves[temp];
             AIAttackCalculator(Attacker, MoveID, 0, movelist);
             return MoveID;
@@ -54,12 +54,20 @@ namespace Usurper_V1._0
             }
             
             AI.party[Victim].takeDamage(damage);
+            if (AI.party[Victim].HP < 0)
+            {
+                AI.party[Victim].killCharacter();
+            }
         }
 
         public void AIAttackCalculator(int Attacker, int Index, int Victim, MoveList movelist)
         {
             Move attack = movelist.Moves[Index];
             double damage;
+            if(party.party[Victim].HP <= 0)
+            {
+                return;
+            }
             if (attack.AtkType == "atk")
             {
                 damage = attack.BasePower * AI.party[Attacker].Atk;

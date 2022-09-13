@@ -8,7 +8,6 @@ namespace Usurper_V1._0
     {
         public Gut() : base(MoveID.gut)
         {
-            this.ID = MoveID.gut;
             basePower = 50;
             atkType = "atk";
             type = "normal";

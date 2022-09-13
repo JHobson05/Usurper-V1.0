@@ -19,6 +19,8 @@ namespace Usurper_V1._0
             type = "Frost";
             Moves[0] = 0;
             Moves[1] = 1;
+            Moves[2] = 5;
+            Moves[3] = 6;
         }
         
     }

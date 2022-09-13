@@ -10,8 +10,10 @@ with.
 
     <!--
     Modify this string to change the font that will be imported.
+	Change the fontname to something like arial if the Pixel Emulator font is not installed on device.
     -->
     <FontName>Pixel Emulator</FontName>
+	 
 
     <!--
     Size is a float value, measured in points. Modify this value to change

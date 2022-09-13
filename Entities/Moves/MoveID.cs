@@ -13,5 +13,8 @@ namespace Usurper_V1._0
         public const int mightyShot = 2;
         public const int barrage = 3;
         public const int gut = 4;
+        public const int iceBeam = 5;
+        public const int frozenFury = 6;
+        public const int flameArrow = 7;
     }
 }
