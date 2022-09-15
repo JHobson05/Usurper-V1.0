@@ -19,8 +19,9 @@ namespace Usurper_V1._0
         public int EasyAIMove(int Attacker,MoveList movelist)
         {
             int temp = random.Next(0,4);
+            int target = random.Next(0, 2);
             int MoveID = AI.party[Attacker].Moves[temp];
-            AIAttackCalculator(Attacker, MoveID, 0, movelist);
+            AIAttackCalculator(Attacker, MoveID, target, movelist);
             return MoveID;
         }
 

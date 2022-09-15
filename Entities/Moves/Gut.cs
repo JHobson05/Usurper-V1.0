@@ -10,7 +10,7 @@ namespace Usurper_V1._0
         {
             basePower = 50;
             atkType = "atk";
-            type = "normal";
+            type = "Normal";
             spEffect = false;
             name = "Gut";
         }

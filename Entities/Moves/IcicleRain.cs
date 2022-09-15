@@ -12,7 +12,7 @@ namespace Usurper_V1._0
             atkType = "atk";
             type = "Frost";
             spEffect = false;
-            basePower = 30;
+            basePower = 40;
             spriteString = "IcicleRainIcon";
             name = "Icicle Rain";
         }

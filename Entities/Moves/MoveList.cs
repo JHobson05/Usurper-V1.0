@@ -19,6 +19,8 @@ namespace Usurper_V1._0
         private IceBeam iceBeam;
         private FrozenFury frozenFury;
         private FlameArrow flameArrow;
+        private ThunderThrust thunderThrust;
+        private VoltVolley voltVolley;
         public List<Move> Moves;
         public MoveList()
         {
@@ -30,6 +32,8 @@ namespace Usurper_V1._0
             iceBeam = new IceBeam();
             frozenFury = new FrozenFury();
             flameArrow = new FlameArrow();
+            thunderThrust = new ThunderThrust();
+            voltVolley = new VoltVolley();
             Moves = new List<Move>();
             Moves.Add(icicleRain);
             Moves.Add(blizzard);
@@ -39,6 +43,8 @@ namespace Usurper_V1._0
             Moves.Add(iceBeam);
             Moves.Add(frozenFury);
             Moves.Add(flameArrow);
+            Moves.Add(thunderThrust);
+            Moves.Add(voltVolley);
         }
 
 

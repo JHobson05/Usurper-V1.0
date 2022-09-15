@@ -10,7 +10,7 @@ namespace Usurper_V1._0
         {
             basePower = 40;
             atkType = "spAtk";
-            type = "normal";
+            type = "Normal";
             spEffect = false;
             name = "Mighty Shot";
         }

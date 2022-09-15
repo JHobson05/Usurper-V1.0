@@ -9,12 +9,15 @@ namespace Usurper_V1._0
         //The constructor for this class sets all the properties inherited by the character class
         public LightningKnight() : base(CharacterID.LightningKnight)
         {
-            atk = 5;
-            spAtk = 8;
-            def = 5;
+            atk = 7;
+            spAtk = 5;
+            def = 6;
             spDef = 5;
-            hp = 100;
+            maxHp = 250; hp = maxHp;
             type = "Electric";
+            name = "Lightning Bloke";
+            Moves[0] = 8;
+            Moves[1] = 9;
         }
     }
 }

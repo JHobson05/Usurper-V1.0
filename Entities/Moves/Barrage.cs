@@ -9,7 +9,7 @@ namespace Usurper_V1._0
         public Barrage() : base(MoveID.barrage)
         {
             basePower = 35;
-            type = "normal";
+            type = "Normal";
             atkType = "spAtk";
             spEffect = false;
             name = "Barrage";
