@@ -13,9 +13,13 @@ namespace Usurper_V1._0
             spAtk = 3;
             def = 6;
             spDef = 4;
-            maxHp = 100; hp = maxHp;
+            maxHp = 275; hp = maxHp;
             spriteString = "";
             name = "Foot Soldier";
+            Moves[0] = 4;
+            Moves[1] = 10;
+            Moves[2] = 11;
+            Moves[3] = 12;
         }
     }
 }

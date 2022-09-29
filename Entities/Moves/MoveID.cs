@@ -17,5 +17,8 @@ namespace Usurper_V1._0
         public const int flameArrow = 7;
         public const int thunderThrust = 8;
         public const int voltVolley = 9;
+        public const int slash = 10;
+        public const int shieldBash = 11;
+        public const int soldiersShout = 12;
     }
 }

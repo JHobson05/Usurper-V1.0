@@ -21,6 +21,9 @@ namespace Usurper_V1._0
         private FlameArrow flameArrow;
         private ThunderThrust thunderThrust;
         private VoltVolley voltVolley;
+        private Slash slash;
+        private ShieldBash shieldBash;
+        private SoldiersShout soldiersShout;
         public List<Move> Moves;
         public MoveList()
         {
@@ -34,6 +37,9 @@ namespace Usurper_V1._0
             flameArrow = new FlameArrow();
             thunderThrust = new ThunderThrust();
             voltVolley = new VoltVolley();
+            slash = new Slash();
+            shieldBash = new ShieldBash();
+            soldiersShout = new SoldiersShout();
             Moves = new List<Move>();
             Moves.Add(icicleRain);
             Moves.Add(blizzard);
@@ -45,6 +51,9 @@ namespace Usurper_V1._0
             Moves.Add(flameArrow);
             Moves.Add(thunderThrust);
             Moves.Add(voltVolley);
+            Moves.Add(slash);
+            Moves.Add(shieldBash);
+            Moves.Add(soldiersShout);
         }
 
 

@@ -14,7 +14,7 @@ namespace Usurper_V1._0
             spEffect = false;
             name = "Thunder Thrust";
             //Temp for testing.
-            spriteString = "IceBeamIcon";
+            spriteString = "ThunderThrustIcon";
         }
     }
 }

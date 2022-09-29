@@ -16,6 +16,7 @@ namespace Usurper_V1._0
             maxHp = 250; hp = maxHp;
             type = "Electric";
             name = "Lightning Bloke";
+            spriteString = "LightningKnight";
             Moves[0] = 8;
             Moves[1] = 9;
         }

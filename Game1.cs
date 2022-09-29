@@ -51,13 +51,14 @@ namespace Usurper_V1._0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Font = Content.Load<SpriteFont>("gameFont");
             character1.Sprite = Content.Load<Texture2D>(character1.getSpriteString);
-            character2.Sprite = Content.Load<Texture2D>(character1.getSpriteString);
+            character2.Sprite = Content.Load<Texture2D>(character2.getSpriteString);
             moveList.Moves[0].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[0].SpriteString);
             moveList.Moves[1].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[1].SpriteString);
             moveList.Moves[5].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[5].SpriteString);
             moveList.Moves[6].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[6].SpriteString);
             moveList.Moves[8].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[8].SpriteString);
             enemyList.enemyList[1].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
+            enemyList.enemyList[0].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             MoveBarSprite = Content.Load<Texture2D>("MoveBar");
             // TODO: use this.Content to load your game content here
         }
