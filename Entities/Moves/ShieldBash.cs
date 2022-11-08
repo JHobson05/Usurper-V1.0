@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Usurper_V1._0
 {
-    class ShieldBash : Move
+    class ShieldBash
     {
-        public ShieldBash() : base(MoveID.shieldBash)
-        {
-            basePower = 25;
-            spEffect = true;
-            atkType = "atk";
-            type = "Normal";
-            name = "Shield Bash";
-        }
+        //public ShieldBash() : base(MoveID.shieldBash)
+        //{
+        //    basePower = 25;
+        //    spEffect = true;
+        //    atkType = "atk";
+        //    type = "Normal";
+        //    name = "Shield Bash";
+        //}
     }
 }

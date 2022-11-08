@@ -10,11 +10,13 @@ namespace Usurper_V1._0
     {
         //The character superclass contains all the properties and methods that will be inherited by individual characters. All enemies are instances of this class.
         //properties
-        protected int atk,spAtk,def,spDef,rank, ID;
+        protected int atk, spAtk, def, spDef, rank, ID;
+        public int activeAbility;
         protected double hp, maxHp;
         protected bool Alive;
         protected string type, name, spriteString;
         protected Vector2 cPosition;
+        protected Color colour;
         public int[] Moves = new int[4];
         public Texture2D Sprite{get; set;}
         //Constructor
@@ -22,6 +24,8 @@ namespace Usurper_V1._0
         {
             this.ID = ID;
             Alive = true;
+            activeAbility = 0;
+            colour = Color.White;        
         }
 
         public double HP{ get { return hp; }}
@@ -29,6 +33,12 @@ namespace Usurper_V1._0
         public void takeDamage(double value)
         {
             hp = hp - value;
+        }
+
+        public Color Colour 
+        { 
+            get { return colour; }
+            set { colour = value; }
         }
 
         //public Move UseMove(int Index)
@@ -43,9 +53,11 @@ namespace Usurper_V1._0
         {
             cPosition = V;
         }
+
         public void killCharacter()
         {
             hp = 0;
+            activeAbility = 0;
             Alive = false;
         }
 

@@ -4,16 +4,16 @@ using System.Text;
 
 namespace Usurper_V1._0
 {
-    public class FrozenFury : Move
+    public class FrozenFury
     {
-        public FrozenFury() : base(MoveID.frozenFury)
-        {
-            basePower = 80;
-            atkType = "spAtk";
-            type = "Frost";
-            name = "Frozen Fury";
-            spEffect = false;
-            spriteString = "FrozenFuryIcon";
-        }
+        //public FrozenFury() : base(MoveID.frozenFury)
+        //{
+        //    basePower = 80;
+        //    atkType = "spAtk";
+        //    type = "Frost";
+        //    name = "Frozen Fury";
+        //    spEffect = false;
+        //    spriteString = "FrozenFuryIcon";
+        //}
     }
 }

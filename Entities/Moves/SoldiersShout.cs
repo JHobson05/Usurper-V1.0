@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Usurper_V1._0
 {
-    class SoldiersShout : Move
+    class SoldiersShout
     {
-        public SoldiersShout() : base(MoveID.soldiersShout)
-        {
-            basePower = 0;
-            spEffect = true;
-            atkType = "spAtk";
-            name = "Soldier's Shout";
-            type = "Normal";
-        }
+        //public SoldiersShout() : base(MoveID.soldiersShout)
+        //{
+        //    basePower = 0;
+        //    spEffect = true;
+        //    atkType = "spAtk";
+        //    name = "Soldier's Shout";
+        //    type = "Normal";
+        //}
     }
 }

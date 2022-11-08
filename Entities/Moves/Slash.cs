@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Usurper_V1._0
 {
-    class Slash : Move
+    class Slash
     {
-        public Slash() : base(MoveID.slash)
-        {
-            basePower = 30;
-            atkType = "atk";
-            type = "Normal";
-            spEffect = false;
-            name = "Slash";
-        }
+        //public Slash() : base(MoveID.slash)
+        //{
+        //    basePower = 30;
+        //    atkType = "atk";
+        //    type = "Normal";
+        //    spEffect = false;
+        //    name = "Slash";
+        //}
     }
 }

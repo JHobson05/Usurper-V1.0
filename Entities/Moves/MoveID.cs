@@ -6,7 +6,7 @@ namespace Usurper_V1._0
 {
     public static class MoveID
     {
-        //This class contains the unique id for each move a character can use.
+        //This class contains the unique id for each move a character can use and is used to ensure consistency throughout the code.
         public const int icicleRain = 0;
         public const int blizzard = 1;
         public const int mightyShot = 2;

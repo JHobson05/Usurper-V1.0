@@ -4,17 +4,16 @@ using System.Text;
 
 namespace Usurper_V1._0
 {
-    class ThunderThrust : Move
+    class ThunderThrust
     {
-        public ThunderThrust() : base(MoveID.thunderThrust)
-        {
-            atkType = "atk";
-            type = "Electric";
-            basePower = 55;
-            spEffect = false;
-            name = "Thunder Thrust";
-            //Temp for testing.
-            spriteString = "ThunderThrustIcon";
-        }
+        //public ThunderThrust() : base(MoveID.thunderThrust)
+        //{
+        //    atkType = "atk";
+        //    type = "Electric";
+        //    basePower = 55;
+        //    spEffect = false;
+        //    name = "Thunder Thrust";
+        //    spriteString = "ThunderThrustIcon";
+        //}
     }
 }

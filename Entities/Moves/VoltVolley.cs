@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Usurper_V1._0
 {
-    class VoltVolley : Move
+    class VoltVolley
     {
-        public VoltVolley() : base(MoveID.voltVolley)
-        {
-            basePower = 45;
-            atkType = "spAtk";
-            type = "Electric";
-            spEffect = true;
-            name = "Volt Volley";
-        }
+        //public VoltVolley() : base(MoveID.voltVolley)
+        //{
+        //    basePower = 45;
+        //    atkType = "spAtk";
+        //    type = "Electric";
+        //    spEffect = true;
+        //    name = "Volt Volley";
+        //}
     }
 }
