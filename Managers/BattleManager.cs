@@ -120,7 +120,7 @@ namespace Usurper_V1._0
                     atkParty.party[i].takeDamage(abilityDamage);
                 }
             }
-            //static charge defensive ability.
+            //Static charge defensive ability.
             if (enemyParty.party[Victim].activeAbility == 4)
             {
                 abilityDamage = 5 * enemyParty.party[Victim].SpAtk;
@@ -183,7 +183,7 @@ namespace Usurper_V1._0
             }
         }
 
-        //Backup code for old method of calculation.
+        //Backup code for old method of calculation. No longer used.
         public void AIAttackCalculator(int Attacker, int Index, int Victim, MoveList movelist)
         {
             Move attack = movelist.Moves[Index];

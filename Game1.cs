@@ -9,7 +9,7 @@ namespace Usurper_V1._0
         //Graphics
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
-        public SpriteFont Font;
+        public SpriteFont Font,sFont;
         public FrostWizard character1;
         public LightningKnight character2;
         public int Height = 360;
@@ -22,6 +22,7 @@ namespace Usurper_V1._0
         //States
         public StateManager stateMgr = new StateManager();
         BattleState battleState;
+        MenuState menuState;
 
         public Game1()
         {
@@ -41,15 +42,23 @@ namespace Usurper_V1._0
             character2 = new LightningKnight();
             party = new Party(character1,character2);
             battleState = new BattleState(enemyList, this,moveList);
+            menuState = new MenuState(this);
             stateMgr.Add(battleState,this);
-            stateMgr.Set(battleState);
+            stateMgr.Add(menuState, this);
+            stateMgr.Set(menuState);
             base.Initialize();
+        }
+
+        public void setBattle()
+        {
+            stateMgr.Set(battleState);
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Font = Content.Load<SpriteFont>("gameFont");
+            sFont = Content.Load<SpriteFont>("SmallGameFont");
             character1.Sprite = Content.Load<Texture2D>(character1.getSpriteString);
             character2.Sprite = Content.Load<Texture2D>(character2.getSpriteString);
             moveList.Moves[0].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[0].SpriteString);

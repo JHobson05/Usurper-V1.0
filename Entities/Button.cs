@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Usurper_V1._0
 {
@@ -10,6 +9,7 @@ namespace Usurper_V1._0
     {
         Vector2 position,sPosition;
         private int length, height,ID;
+        public Color Dynamic;
         public Button(Vector2 Position, int length, int height, int ID)
         {
             position = Position;
@@ -18,6 +18,7 @@ namespace Usurper_V1._0
             sPosition.X = Position.X + length;
             sPosition.Y = Position.Y + height;
             this.ID = ID;
+            Dynamic = Color.White;
         }
 
         public Boolean checkPressed (MouseState mState)
@@ -32,6 +33,17 @@ namespace Usurper_V1._0
                     }
                 }
             }
+            return false;
+        }
+
+        public Boolean CheckHover (MouseState mState)
+        {
+            if ((mState.Position.ToVector2().X > position.X && mState.Position.ToVector2().X < sPosition.X) && (mState.Position.ToVector2().Y > position.Y && mState.Position.ToVector2().Y < sPosition.Y))
+            {
+                Dynamic = Color.Silver;
+                return true;
+            }
+            Dynamic = Color.White;
             return false;
         }
 

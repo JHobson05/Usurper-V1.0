@@ -92,6 +92,18 @@
 /processorParam:TextureFormat=Color
 /build:LightningKnight.png
 
+#begin MenuBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MenuBar.png
+
 #begin MoveBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -115,6 +127,13 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:pixil-frame-0.png
+
+#begin SmallGameFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:SmallGameFont.spritefont
 
 #begin ThunderThrustIcon.png
 /importer:TextureImporter

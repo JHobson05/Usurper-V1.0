@@ -39,6 +39,7 @@ namespace Usurper_V1._0
         private Move slash;
         private Move shieldBash;
         private Move soldiersShout;
+        private Move staticBuildup;
         public List<Move> Moves;
         public MoveList()
         {
@@ -55,6 +56,7 @@ namespace Usurper_V1._0
             slash = new Move(MoveID.slash,"atk","Normal",null,"Slash",30,false,0);
             shieldBash = new Move(MoveID.shieldBash,"atk","Normal",null,"Shield Bash", 25, true,0);
             soldiersShout = new Move(MoveID.soldiersShout,"spAtk","Normal",null,"Soldiers Shout",0,true,0);
+            staticBuildup = new Move(MoveID.staticBuildup, "spAtk", "Electric", null, "Static Buildup", 0, true, 4);
             Moves = new List<Move>();
             Moves.Add(icicleRain);
             Moves.Add(blizzard);
@@ -69,6 +71,7 @@ namespace Usurper_V1._0
             Moves.Add(slash);
             Moves.Add(shieldBash);
             Moves.Add(soldiersShout);
+            Moves.Add(staticBuildup);
         }
 
 

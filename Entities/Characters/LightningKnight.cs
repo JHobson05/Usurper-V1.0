@@ -19,6 +19,7 @@ namespace Usurper_V1._0
             spriteString = "LightningKnight";
             Moves[0] = 8;
             Moves[1] = 9;
+            Moves[2] = 13;
         }
     }
 }
