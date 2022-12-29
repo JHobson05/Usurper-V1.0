@@ -128,7 +128,7 @@ namespace Usurper_V1._0
             }
             int dodge = random.Next(1, 101);
             //FrostBite defensive ability
-            if(atkParty.party[Attacker].activeAbility == 2)
+            if(enemyParty.party[Victim].activeAbility == 2)
             {
                 if (dodge <= 70)
                 {
@@ -149,26 +149,20 @@ namespace Usurper_V1._0
                 {
                     damage = damage * 1.5;
                 }
-                else if(enemyParty.party[Victim].activeAbility == 4)
+                else if(enemyParty.party[Victim].activeAbility == 6)
                 {
                     atkParty.party[Attacker].takeDamage(30);
                 }
-            }
-            else
-            {
-                damage = attack.BasePower * atkParty.party[Attacker].SpAtk;
-            }
-            if(attack.Type == atkParty.party[Attacker].Type)
-            {
-                damage = Math.Round(damage * 1.2);
-            }
-            if (attack.AtkType == "atk")
-            {
                 damage = damage / enemyParty.party[Victim].Def;
             }
             else
             {
+                damage = attack.BasePower * atkParty.party[Attacker].SpAtk;
                 damage = damage / enemyParty.party[Victim].SpDef;
+            }
+            if(attack.Type == atkParty.party[Attacker].Type)
+            {
+                damage = Math.Round(damage * 1.2);
             }
             damage = Math.Round(damage * Crit);
             if (dodged)

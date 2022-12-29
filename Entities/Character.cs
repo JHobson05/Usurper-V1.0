@@ -30,8 +30,13 @@ namespace Usurper_V1._0
 
         public double HP{ get { return hp; }}
         public double MaxHp { get { return maxHp; } }
+        public bool alive { get { return Alive; } }
         public void takeDamage(double value)
         {
+            if (!this.Alive)
+            {
+                return;
+            }
             hp = hp - value;
         }
 

@@ -37,6 +37,18 @@
 /processorParam:TextureFormat=Color
 /build:BlizzardIcon.png
 
+#begin ExitIcon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ExitIcon.png
+
 #begin FrozenFuryIcon.png
 /importer:TextureImporter
 /processor:TextureProcessor

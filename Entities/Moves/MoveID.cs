@@ -21,5 +21,9 @@ namespace Usurper_V1._0
         public const int shieldBash = 11;
         public const int soldiersShout = 12;
         public const int staticBuildup = 13;
+        public const int lightningLance = 14;
+        public const int flamethrower = 15;
+        public const int fireball = 16;
+        public const int searingSlash = 17;
     }
 }

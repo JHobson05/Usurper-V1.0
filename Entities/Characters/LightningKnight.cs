@@ -13,13 +13,14 @@ namespace Usurper_V1._0
             spAtk = 5;
             def = 6;
             spDef = 5;
-            maxHp = 250; hp = maxHp;
+            maxHp = 300; hp = maxHp;
             type = "Electric";
-            name = "Lightning Bloke";
+            name = "Lightning Knight";
             spriteString = "LightningKnight";
             Moves[0] = 8;
             Moves[1] = 9;
             Moves[2] = 13;
+            Moves[3] = 14;
         }
     }
 }

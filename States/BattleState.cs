@@ -13,10 +13,11 @@ namespace Usurper_V1._0
         Queue PlayerOrder, AIOrder;
         MouseState mState;
         Party enemies;
-        Button Move1,Move2,Move3,Move4,Enemy,Enemy2;
+        Stack Turns, Turns2;
+        Button Move1,Move2,Move3,Move4,Enemy,Enemy2,PTurn;
         bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn,gPause;
-        Vector2 B1, B2, B3,B4,B5,B6,B7,B8;
-        int cCharacter, cEnemy,moveIndex,eMove,aEnemy,enemyTemp,QueueSize =2;
+        Vector2 B1, B2, B3,B4,B5,B6,B7,B8,B9;
+        int cCharacter,aCharacter, cEnemy,moveIndex,eMove,aEnemy,enemyTemp,QueueSize =2;
         float timer;
         public BattleState (EnemyList list,Game1 g,MoveList moveList) : base(StateID.battle)
         {
@@ -31,9 +32,13 @@ namespace Usurper_V1._0
             AIOrder = new Queue(QueueSize);
             QueueSetup(PlayerOrder);
             QueueSetup(AIOrder);
+            Turns = new Stack(20);
+            Turns2 = new Stack(20);
             Attack = false;
             enemyturn = false;
-            cCharacter = PlayerOrder.Dequeue();
+            //cCharacter = PlayerOrder.Dequeue();
+            cCharacter = 0;
+            aCharacter = cCharacter;
             mReleased = true;
             eMove = 0;
             aEnemy = 0;
@@ -48,9 +53,11 @@ namespace Usurper_V1._0
             B6 = new Vector2(100, 327);
             B7 = new Vector2(50, 50);
             B8 = new Vector2(550, 50);
+            B9 = new Vector2(180,326);
             Move3 = new Button(B5, 32, 32, 2);
             Move4 = new Button(B6, 32, 32, 3);
             Enemy2 = new Button(B8, 32, 32, 0);
+            PTurn = new Button(B9, 32, 32, 0);
             g.party.party[0].setPosition(B4);
             g.party.party[1].setPosition(B7);
             g.enemyList.enemyList[1].setPosition(B3);
@@ -78,6 +85,10 @@ namespace Usurper_V1._0
                 if (enemyturn)
                 {
                     aEnemy = (aEnemy + 1) % 2;
+                    if (!enemies.party[aEnemy].alive)
+                    {
+                        aEnemy = (aEnemy + 1) % 2;
+                    }
                     eMove = bMgr.EasyAIMove(aEnemy, moveList);
                     enemyturn = false;
                     moveChosen = false;
@@ -102,7 +113,15 @@ namespace Usurper_V1._0
 
                     if (enemyChosen && Attack && moveChosen)
                     {
-                        bMgr.AttackCalculator(0, moveIndex, cEnemy, moveList,g.party,enemies);
+                        bMgr.AttackCalculator(aCharacter, moveIndex, cEnemy, moveList,g.party,enemies);
+                        if (cCharacter == 0)
+                        {
+                            Turns.push(moveIndex, cCharacter, cEnemy);
+                        }
+                        else
+                        {
+                            Turns2.push(moveIndex, cCharacter, cEnemy);
+                        }
                         moveChosen = false;
                         //Moveorder.Enqueue(cCharacter);
                         //if(Moveorder.Pointer() >= (QueueSize / 2))
@@ -120,6 +139,11 @@ namespace Usurper_V1._0
                             moveChosen = true;
                         }
                         cCharacter = (cCharacter + 1) % 2;
+                        aCharacter = cCharacter;
+                        if (!g.party.party[cCharacter].alive)
+                        {
+                            cCharacter = (cCharacter + 1) % 2;
+                        }
                     }
                 }
             }
@@ -140,7 +164,7 @@ namespace Usurper_V1._0
             DrawStart(g);
             if (enemySelect && !enemyChosen)
             {
-                g._spriteBatch.DrawString(g.Font, "Select a target!", new Vector2(100, 0), Color.White);
+                g._spriteBatch.DrawString(g.Font, "Select a target!", new Vector2(100, 100), Color.White);
             }
             if (!moveChosen)
             {
@@ -149,6 +173,10 @@ namespace Usurper_V1._0
             if (enemyturn)
             {
                 g._spriteBatch.DrawString(g.Font, "The enemy is about to attack", new Vector2(0, 200), Color.White);
+            }
+            if (!Turns.isEmpty() && !Turns2.isEmpty())
+            {
+                g._spriteBatch.DrawString(g.Font, "<--", B9, PTurn.Dynamic);
             }
             g._spriteBatch.End();
         }
@@ -161,6 +189,7 @@ namespace Usurper_V1._0
             g._spriteBatch.Draw(g.party.party[0].Sprite, g.party.party[0].getPosition, g.party.party[0].Colour);
             g._spriteBatch.Draw(g.party.party[1].Sprite, g.party.party[1].getPosition, g.party.party[1].Colour);
             g._spriteBatch.Draw(g.MoveBarSprite, new Vector2(0, 326), Color.White);
+            g._spriteBatch.DrawString(g.Font, "Moves", new Vector2(15, 305), Color.White);
             g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[0]].GetIconSprite, B1, Color.White);
             //g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[1]].GetIconSprite, B2, Color.White);
             //g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[2]].GetIconSprite, B5, Color.White);
@@ -173,7 +202,7 @@ namespace Usurper_V1._0
             g._spriteBatch.DrawString(g.Font, ("HP: " + g.enemyList.enemyList[cCharacter].HP.ToString()), new Vector2(500, 20), Color.White);
         }
 
-        //The order of moves is determined through this queue. Each value is the index of a character and when its a characters turn they are dequeued then enqueued again.
+        //No longer used. The order of moves is determined through this queue. Each value is the index of a character and when its a characters turn they are dequeued then enqueued again.
         public void QueueSetup(Queue queue)
         {
             queue.Enqueue(0);
@@ -183,6 +212,7 @@ namespace Usurper_V1._0
         public void PlayerMove(Game1 g)
         {
             //This method is used to find out which move was selected by the player.
+            PTurn.CheckHover(mState);
             if (Move1.checkPressed(mState))
             {
                 Attack = true;
@@ -210,6 +240,16 @@ namespace Usurper_V1._0
                 enemySelect = true;
                 moveIndex = g.party.party[cCharacter].Moves[Move4.returnID()];
                 moveChosen = true;
+            }
+            if (PTurn.checkPressed(mState) && !Turns.isEmpty())
+            {
+                Attack = true;
+                enemySelect = true;
+                moveChosen = true;
+                Turn turn = Turns.Pop();
+                moveIndex = turn.Index;
+                aCharacter = turn.Attacker;
+                cEnemy = turn.Victim;
             }
         }
     }

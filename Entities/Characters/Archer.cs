@@ -12,7 +12,7 @@ namespace Usurper_V1._0
             spAtk = 3;
             def = 3;
             spDef = 4;
-            maxHp = 500; hp = maxHp;
+            maxHp = 200; hp = maxHp;
             spriteString = "Archer";
             name = "Archer";
             type = "Normal";

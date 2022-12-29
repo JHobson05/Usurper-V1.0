@@ -90,5 +90,10 @@ namespace Usurper_V1._0
 
             base.Draw(gameTime);
         }
+
+        public void Quit()
+        {
+            this.Exit();
+        }
     }
 }
