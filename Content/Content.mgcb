@@ -147,6 +147,18 @@
 /processorParam:TextureFormat=Compressed
 /build:SmallGameFont.spritefont
 
+#begin StaticBuildupIcon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:StaticBuildupIcon.png
+
 #begin ThunderThrustIcon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -158,4 +170,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:ThunderThrustIcon.png
+
+#begin VoltVolleyIcon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:VoltVolleyIcon.png
 

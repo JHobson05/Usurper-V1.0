@@ -10,7 +10,7 @@ namespace Usurper_V1._0
           Similar to the state system I am using a class to contain the moves.
           Each character will instead contain an array with id references to the moves it has access to. 
           When a move is needed it will use the id to access the move via this class. Originally each move was its own subclass
-          but that has been changed to have each one instantiated as just a move inside the list.
+          but that has been changed to have each one instantiated as just a move inside the list. There are exceptions for moves which dont attack enemies but are instead applying buffs or debuffs.
         */
         //private IcicleRain icicleRain;
         //private Blizzard blizzard;
@@ -52,11 +52,11 @@ namespace Usurper_V1._0
             frozenFury = new Move(MoveID.frozenFury,"spAtk","Frost","FrozenFuryIcon","Frozen Fury",80, false,0);
             flameArrow = new Move(MoveID.flameArrow,"spAtk","Fire",null,"Flame Arrow",30,true,5);
             thunderThrust = new Move(MoveID.thunderThrust,"atk","Electric","ThunderThrustIcon","Thunder Thrust",55,false,0);
-            voltVolley = new Move(MoveID.voltVolley,"spAtk","Electric",null,"Volt Volley",45,true,3);
+            voltVolley = new Move(MoveID.voltVolley,"spAtk","Electric","VoltVolleyIcon","Volt Volley",45,true,3);
             slash = new Move(MoveID.slash,"atk","Normal",null,"Slash",30,false,0);
             shieldBash = new Move(MoveID.shieldBash,"atk","Normal",null,"Shield Bash", 25, true,0);
             soldiersShout = new Move(MoveID.soldiersShout,"spAtk","Normal",null,"Soldiers Shout",0,true,0);
-            staticBuildup = new Move(MoveID.staticBuildup, "spAtk", "Electric", null, "Static Buildup", 0, true, 4);
+            staticBuildup = new Move(MoveID.staticBuildup, "spAtk", "Electric", "StaticBuildupIcon", "Static Buildup", 0, true, 4);
             Moves = new List<Move>();
             Moves.Add(icicleRain);
             Moves.Add(blizzard);

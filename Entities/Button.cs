@@ -10,6 +10,7 @@ namespace Usurper_V1._0
         Vector2 position,sPosition;
         private int length, height,ID;
         public Color Dynamic;
+        public bool active;
         public Button(Vector2 Position, int length, int height, int ID)
         {
             position = Position;
@@ -19,7 +20,9 @@ namespace Usurper_V1._0
             sPosition.Y = Position.Y + height;
             this.ID = ID;
             Dynamic = Color.White;
+            active = true;
         }
+
 
         public Boolean checkPressed (MouseState mState)
         {

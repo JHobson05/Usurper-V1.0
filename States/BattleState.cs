@@ -191,8 +191,8 @@ namespace Usurper_V1._0
             g._spriteBatch.Draw(g.MoveBarSprite, new Vector2(0, 326), Color.White);
             g._spriteBatch.DrawString(g.Font, "Moves", new Vector2(15, 305), Color.White);
             g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[0]].GetIconSprite, B1, Color.White);
-            //g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[1]].GetIconSprite, B2, Color.White);
-            //g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[2]].GetIconSprite, B5, Color.White);
+            g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[1]].GetIconSprite, B2, Color.White);
+            g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[2]].GetIconSprite, B5, Color.White);
             //g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[3]].GetIconSprite, B6, Color.White);
             g._spriteBatch.Draw(enemies.party[1].Sprite, enemies.party[1].getPosition, enemies.party[1].Colour);
             //g._spriteBatch.Draw(g.enemyList.enemyList[1].Sprite, g.enemyList.enemyList[1].getPosition, Color.White);

@@ -16,12 +16,17 @@ namespace Usurper_V1._0
             "that are either offensive or defensive abilities.\n Frost type has the Brittle offensive ability and \nthe Frostbite defensive ability." +
             "Brittle makes the character the ability was \napplied to recieve 1.5X damage multiplier to all Atk damage." +
             "\nFrostbite makes the character that the ability was applied to \ngenerate a blistering cold aura around their general location." +
-            "\nThis makes any attempt to attack the character much more likely to miss \n as the attack is slowed down by the cold allowing an easier dodge.";
-        Vector2 B1, B2,B3;
-        Button play, instructions,Exit;
+            "\nThis makes any attempt to attack the character much more likely to miss \n as the attack is slowed down by the cold allowing an easier dodge." +
+            "\nElectric type has the Arcweb offensive ability and the Static Charge \n defensive ability. Arcweb applies a damage over time effect to " +
+            "\nthe teammates of the character who is afflicted with the ability. The damage \nis calculated based off the afflicted characters Special stats. " +
+            "\nStatic Charge deals a small amount of damage to any character who attacks a \ncharacter  with this ability active. The damage is calculated \nbased off " +
+            "the defenders Special stats.";
+        string Instructions2 = "Fire type has the ... offensive ability and the ... defensive ability\n .";
+        Vector2 B1, B2,B3,B4,B5;
+        Button play, instructions,Exit,instructions2,rInstruction;
         Texture2D MenuBar,Quit;
         MouseState mstate;
-        bool HTP;
+        bool HTP, HTP2;
 
         public MenuState (Game1 g) : base(StateID.menu)
         {
@@ -32,9 +37,13 @@ namespace Usurper_V1._0
             B1 = new Vector2(270,90);
             B2 = new Vector2(270, 140);
             B3 = new Vector2(0, 0);
+            B4 = new Vector2(540, 320);
+            B5 = new Vector2(10,320);
             Exit = new Button(B3, 18, 31,2);
             play = new Button(B1,100,40,0);
             instructions = new Button(B2, 100, 40, 1);
+            instructions2 = new Button(B4, 32, 32, 3);
+            rInstruction = new Button(B5, 18, 31, 4);
             MenuBar = g.Content.Load<Texture2D>("MenuBar");
             Quit = g.Content.Load<Texture2D>("ExitIcon");
         }
@@ -44,7 +53,16 @@ namespace Usurper_V1._0
             g._spriteBatch.Begin();
             if (HTP)
             {
-                g._spriteBatch.DrawString(g.sFont,Instructions1,new Vector2(10,80),Color.White);
+                g._spriteBatch.Draw(Quit, B5, rInstruction.Dynamic);
+                if (!HTP2)
+                {
+                    g._spriteBatch.DrawString(g.sFont, Instructions1, new Vector2(10, 10), Color.White);
+                    g._spriteBatch.DrawString(g.Font, "-->", B4, Color.White);
+                }
+                else
+                {
+                    g._spriteBatch.DrawString(g.sFont, Instructions2, new Vector2(10, 10), Color.White);
+                }
             }
             else
             {
@@ -57,17 +75,35 @@ namespace Usurper_V1._0
         {
             mstate = Mouse.GetState();
             play.CheckHover(mstate);
-            if (play.checkPressed(mstate))
+            if (play.checkPressed(mstate) && play.active)
             {
                 g.setBattle();
             }
             instructions.CheckHover(mstate);
-            if (instructions.checkPressed(mstate))
+            if (instructions.checkPressed(mstate) && instructions.active)
             {
                 HTP = true;
+                Exit.active = false;
+                instructions2.active = true;
+                play.active = false;
+                rInstruction.active = true;
+            }
+            if (instructions2.checkPressed(mstate) && instructions2.active)
+            {
+                HTP2 = true;
+                instructions2.active = false;
+            }
+            rInstruction.CheckHover(mstate);
+            if(rInstruction.checkPressed(mstate) && rInstruction.active)
+            {
+                HTP = false;
+                HTP2 = false;
+                rInstruction.active = false;
+                play.active = true;
+                Exit.active = true;
             }
             Exit.CheckHover(mstate);
-            if (Exit.checkPressed(mstate))
+            if (Exit.checkPressed(mstate) && Exit.active)
             {
                 g.Quit();
             }
