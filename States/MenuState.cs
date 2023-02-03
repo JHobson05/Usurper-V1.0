@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Usurper_V1._0
 {
@@ -24,7 +21,6 @@ namespace Usurper_V1._0
         string Instructions2 = "Fire type has the ... offensive ability and the ... defensive ability\n .";
         Vector2 B1, B2,B3,B4,B5;
         Button play, instructions,Exit,instructions2,rInstruction;
-        Texture2D MenuBar,Quit;
         MouseState mstate;
         bool HTP, HTP2;
 
@@ -44,8 +40,6 @@ namespace Usurper_V1._0
             instructions = new Button(B2, 100, 40, 1);
             instructions2 = new Button(B4, 32, 32, 3);
             rInstruction = new Button(B5, 18, 31, 4);
-            MenuBar = g.Content.Load<Texture2D>("MenuBar");
-            Quit = g.Content.Load<Texture2D>("ExitIcon");
         }
 
         public override void Draw(Game1 g)
@@ -53,11 +47,11 @@ namespace Usurper_V1._0
             g._spriteBatch.Begin();
             if (HTP)
             {
-                g._spriteBatch.Draw(Quit, B5, rInstruction.Dynamic);
+                g._spriteBatch.Draw(g.Back, B5, rInstruction.Dynamic);
                 if (!HTP2)
                 {
                     g._spriteBatch.DrawString(g.sFont, Instructions1, new Vector2(10, 10), Color.White);
-                    g._spriteBatch.DrawString(g.Font, "-->", B4, Color.White);
+                    g._spriteBatch.DrawString(g.Font, "-->", B4, instructions2.Dynamic);
                 }
                 else
                 {
@@ -77,7 +71,7 @@ namespace Usurper_V1._0
             play.CheckHover(mstate);
             if (play.checkPressed(mstate) && play.active)
             {
-                g.setBattle();
+                g.setSelect();
             }
             instructions.CheckHover(mstate);
             if (instructions.checkPressed(mstate) && instructions.active)
@@ -88,6 +82,7 @@ namespace Usurper_V1._0
                 play.active = false;
                 rInstruction.active = true;
             }
+            instructions2.CheckHover(mstate);
             if (instructions2.checkPressed(mstate) && instructions2.active)
             {
                 HTP2 = true;
@@ -111,13 +106,13 @@ namespace Usurper_V1._0
 
         public void BaseDraw(Game1 g)
         {
-            g._spriteBatch.Draw(MenuBar, B1, play.Dynamic);
-            g._spriteBatch.Draw(MenuBar, B2, instructions.Dynamic);
+            g._spriteBatch.Draw(g.MenuBar, B1, play.Dynamic);
+            g._spriteBatch.Draw(g.MenuBar, B2, instructions.Dynamic);
             //Vector for string should always be +20X and + 5Y of vector of button
             g._spriteBatch.DrawString(g.Font, "Play", new Vector2(290, 95), play.Dynamic);
             //Word instructions is very big so i had to use a smaller font and take up more space on the box as i made it very small.
             g._spriteBatch.DrawString(g.sFont, "Instructions", new Vector2(274, 150), instructions.Dynamic);
-            g._spriteBatch.Draw(Quit, B3, Exit.Dynamic);
+            g._spriteBatch.Draw(g.Back, B3, Exit.Dynamic);
         }
     }
 }

@@ -17,12 +17,13 @@ namespace Usurper_V1._0
         public EnemyList enemyList = new EnemyList();
         public MoveList moveList = new MoveList();
         public Party party;
-        public Texture2D MoveBarSprite;
+        public Texture2D MoveBarSprite,Back,MenuBar;
 
         //States
         public StateManager stateMgr = new StateManager();
         BattleState battleState;
         MenuState menuState;
+        SelectState selectState;
 
         public Game1()
         {
@@ -33,7 +34,6 @@ namespace Usurper_V1._0
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             Window.Title = "Usurper";
             _graphics.PreferredBackBufferHeight = Height;
             _graphics.PreferredBackBufferWidth = width;
@@ -43,15 +43,27 @@ namespace Usurper_V1._0
             party = new Party(character1,character2);
             battleState = new BattleState(enemyList, this,moveList);
             menuState = new MenuState(this);
+            selectState = new SelectState(this);
             stateMgr.Add(battleState,this);
             stateMgr.Add(menuState, this);
+            stateMgr.Add(selectState, this);
             stateMgr.Set(menuState);
             base.Initialize();
+        }
+
+        public void setMenu()
+        {
+            stateMgr.Set(menuState);
         }
 
         public void setBattle()
         {
             stateMgr.Set(battleState);
+        }
+
+        public void setSelect()
+        {
+            stateMgr.Set(selectState);
         }
 
         protected override void LoadContent()
@@ -70,6 +82,8 @@ namespace Usurper_V1._0
             moveList.Moves[13].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[13].SpriteString);
             enemyList.enemyList[1].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             enemyList.enemyList[0].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
+            Back = Content.Load<Texture2D>("ExitIcon");
+            MenuBar = Content.Load<Texture2D>("MenuBar");
             MoveBarSprite = Content.Load<Texture2D>("MoveBar");
             // TODO: use this.Content to load your game content here
         }
@@ -78,8 +92,6 @@ namespace Usurper_V1._0
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
             stateMgr.Update(gameTime,this);
             base.Update(gameTime);
         }
@@ -88,7 +100,6 @@ namespace Usurper_V1._0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             stateMgr.Draw(this);
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
