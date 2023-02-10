@@ -16,6 +16,7 @@ namespace Usurper_V1._0
             maxHp = 350; hp = maxHp;
             spriteString = "";
             name = "Foot Soldier";
+            type = "Normal";
             Moves[0] = 4;
             Moves[1] = 10;
             Moves[2] = 11;

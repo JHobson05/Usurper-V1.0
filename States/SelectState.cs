@@ -15,6 +15,11 @@ namespace Usurper_V1._0
 
         }
 
+        public override void Set(Game1 g)
+        {
+            
+        }
+
         public override void Initialize(Game1 g)
         {
             B1 = new Vector2(621, 0);
@@ -36,11 +41,13 @@ namespace Usurper_V1._0
             F1.CheckHover(mState);
             if(F1.checkPressed(mState) && F1.active)
             {
+                g.stateMgr.SetAct(1,g);
                 g.setBattle();
             }
             F2.CheckHover(mState);
             if(F2.checkPressed(mState)&& F2.active)
             {
+                g.stateMgr.SetAct(2,g);
                 g.setBattle();
             }
         }

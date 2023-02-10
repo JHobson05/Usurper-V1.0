@@ -9,6 +9,7 @@ namespace Usurper_V1._0
         MoveList moveList;
         Queue PlayerOrder, AIOrder;
         MouseState mState;
+        EnemyList list;
         Party enemies;
         Stack Turns, Turns2;
         Button Move1,Move2,Move3,Move4,Enemy,Enemy2,PTurn;
@@ -19,8 +20,21 @@ namespace Usurper_V1._0
         public BattleState (EnemyList list,Game1 g,MoveList moveList) : base(StateID.battle)
         {
             this.moveList = moveList;
-            enemies = new Party(list.enemyList[0],list.enemyList[1]);
+            //enemies = new Party(list.enemyList[0],list.enemyList[1]);
+            this.list = list;
             bMgr = new BattleManager(g.party,enemies);
+        }
+
+        public override void Set(Game1 g)
+        {
+            if (battleID == 1)
+            {
+                enemies = new Party(list.enemyList[3]);
+            }
+            else if (battleID == 2)
+            {
+                enemies = new Party(list.enemyList[4]);
+            }
         }
 
         public override void Initialize(Game1 g)
@@ -43,8 +57,8 @@ namespace Usurper_V1._0
             Move1 = new Button(B1, 32, 32,0);
             B2 = new Vector2(34, 327);
             Move2 = new Button(B2, 32, 32,1);
-            B3 = new Vector2(600, 50);
-            Enemy = new Button(B3, 32, 32, 1);
+            //B3 = new Vector2(600, 50);
+            Enemy = new Button(B8, 32, 32, 1);
             B4 = new Vector2(10, 50);
             B5 = new Vector2(67, 327);
             B6 = new Vector2(100, 327);
@@ -53,12 +67,14 @@ namespace Usurper_V1._0
             B9 = new Vector2(180,326);
             Move3 = new Button(B5, 32, 32, 2);
             Move4 = new Button(B6, 32, 32, 3);
-            Enemy2 = new Button(B8, 32, 32, 0);
+            //Enemy2 = new Button(B8, 32, 32, 0);
             PTurn = new Button(B9, 32, 32, 0);
             g.party.party[0].setPosition(B4);
             g.party.party[1].setPosition(B7);
-            g.enemyList.enemyList[1].setPosition(B3);
-            g.enemyList.enemyList[0].setPosition(B8);
+            //g.enemyList.enemyList[1].setPosition(B3);
+            //g.enemyList.enemyList[0].setPosition(B8);
+            g.enemyList.enemyList[3].setPosition(B8);
+            g.enemyList.enemyList[4].setPosition(B8);
         }
 
         public override void Update(GameTime gt, Game1 g)
@@ -81,11 +97,11 @@ namespace Usurper_V1._0
                 //}
                 if (enemyturn)
                 {
-                    aEnemy = (aEnemy + 1) % 2;
-                    if (!enemies.party[aEnemy].alive)
-                    {
-                        aEnemy = (aEnemy + 1) % 2;
-                    }
+                    aEnemy = 0;
+                    //if (!enemies.party[aEnemy].alive)
+                    //{
+                    //    aEnemy = (aEnemy + 1) % 2;
+                    //}
                     eMove = bMgr.EasyAIMove(aEnemy, moveList);
                     enemyturn = false;
                     moveChosen = false;
@@ -94,21 +110,21 @@ namespace Usurper_V1._0
                 {
                     mReleased = false;
                     PlayerMove(g);
-                    if (enemySelect)
-                    {
-                        if (Enemy.checkPressed(mState))
-                        {
-                            enemyChosen = true;
-                            if (enemyChosen) cEnemy = 1;
-                        }
-                        else if (Enemy2.checkPressed(mState))
-                        {
-                            enemyChosen = true;
-                            if (enemyChosen) cEnemy = 0;
-                        }
-                    }
+                    //if (enemySelect)
+                    //{
+                        //if (Enemy.checkPressed(mState))
+                        //{
+                        //    enemyChosen = true;
+                        //    if (enemyChosen) cEnemy = 1;
+                        //}
+                        //else if (Enemy2.checkPressed(mState))
+                        //{
+                        //    enemyChosen = true;
+                        //    if (enemyChosen) cEnemy = 0;
+                        //}
+                    //}
 
-                    if (enemyChosen && Attack && moveChosen)
+                    if (Attack && moveChosen)
                     {
                         bMgr.AttackCalculator(aCharacter, moveIndex, cEnemy, moveList,g.party,enemies);
                         if (cCharacter == 0)
@@ -191,12 +207,13 @@ namespace Usurper_V1._0
             g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[1]].GetIconSprite, B2, Color.White);
             g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[2]].GetIconSprite, B5, Color.White);
             //g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[3]].GetIconSprite, B6, Color.White);
-            g._spriteBatch.Draw(enemies.party[1].Sprite, enemies.party[1].getPosition, enemies.party[1].Colour);
+            //g._spriteBatch.Draw(enemies.party[1].Sprite, enemies.party[1].getPosition, enemies.party[1].Colour);
             //g._spriteBatch.Draw(g.enemyList.enemyList[1].Sprite, g.enemyList.enemyList[1].getPosition, Color.White);
-            g._spriteBatch.DrawString(g.Font, g.enemyList.enemyList[cCharacter].Name, new Vector2(450, 0), Color.White);
+            //g._spriteBatch.DrawString(g.Font, g.enemyList.enemyList[cCharacter].Name, new Vector2(450, 0), Color.White);
             //g._spriteBatch.Draw(g.enemyList.enemyList[0].Sprite, g.enemyList.enemyList[0].getPosition, Color.White);
+            g._spriteBatch.DrawString(g.Font, enemies.party[0].Name, new Vector2(450, 0), Color.White);
             g._spriteBatch.Draw(enemies.party[0].Sprite, enemies.party[0].getPosition, enemies.party[0].Colour);
-            g._spriteBatch.DrawString(g.Font, ("HP: " + g.enemyList.enemyList[cCharacter].HP.ToString()), new Vector2(500, 20), Color.White);
+            g._spriteBatch.DrawString(g.Font, ("HP: " + enemies.party[0].HP.ToString()), new Vector2(500, 20), Color.White);
         }
 
         //No longer used. The order of moves is determined through this queue. Each value is the index of a character and when its a characters turn they are dequeued then enqueued again.
@@ -213,35 +230,35 @@ namespace Usurper_V1._0
             if (Move1.checkPressed(mState))
             {
                 Attack = true;
-                enemySelect = true;
+                //enemySelect = true;
                 moveIndex = g.party.party[cCharacter].Moves[Move1.returnID()];
                 moveChosen = true;
             }
             if (Move2.checkPressed(mState))
             {
                 Attack = true;
-                enemySelect = true;
+                //enemySelect = true;
                 moveIndex = g.party.party[cCharacter].Moves[Move2.returnID()];
                 moveChosen = true;
             }
             if (Move3.checkPressed(mState))
             {
                 Attack = true;
-                enemySelect = true;
+                //enemySelect = true;
                 moveIndex = g.party.party[cCharacter].Moves[Move3.returnID()];
                 moveChosen = true;
             }
             if (Move4.checkPressed(mState))
             {
                 Attack = true;
-                enemySelect = true;
+                //enemySelect = true;
                 moveIndex = g.party.party[cCharacter].Moves[Move4.returnID()];
                 moveChosen = true;
             }
             if (PTurn.checkPressed(mState) && !Turns.isEmpty())
             {
                 Attack = true;
-                enemySelect = true;
+                //enemySelect = true;
                 moveChosen = true;
                 Turn turn = Turns.Pop();
                 moveIndex = turn.Index;

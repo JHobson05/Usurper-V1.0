@@ -8,12 +8,18 @@ namespace Usurper_V1._0
     {
         public Golem() : base(CharacterID.Golem)
         {
-            atk = 7;
-            spAtk = 3;
-            def = 7;
-            spDef =4;
-            maxHp = 110; hp = maxHp;
-            type = "Organic";
+            atk = 12;
+            spAtk = 4;
+            def = 9;
+            spDef =3;
+            maxHp = 1200; hp = maxHp;
+            type = "Normal";
+            spriteString = "Golem";
+            name = "The Golem";
+            Moves[0] =18;
+            Moves[1] =19;
+            Moves[2] =20;
+            Moves[3] =21;
         }
     }
 }

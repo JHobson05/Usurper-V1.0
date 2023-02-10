@@ -16,5 +16,6 @@ namespace Usurper_V1._0
         public const int Archer = 6;
         public const int Anchor = 7;
         public const int Golem = 8;
+        public const int FlameDemon = 9;
     }
 }

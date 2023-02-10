@@ -6,8 +6,7 @@ namespace Usurper_V1._0
 {
     public class EnemyList
     {
-        // A base version of each possible enemy exists in this class. When starting a fight 3 enemies are randomly pulled from the list.
-        // When the game is further developed i will add different methods that pull enemies that are specific to a certain location or encounter.
+        // A base version of each possible enemy exists in this class. When starting a fight depending on which act is chosen a predetermined boss will be selected
         public List<Character> enemyList;
         Random random = new Random();
         public EnemyList()
@@ -15,12 +14,14 @@ namespace Usurper_V1._0
             enemyList = new List<Character>();
             Character footSoldier = new FootSoldier();
             Character Archer = new Archer();
-            Character Anchor = new Character(4);
-            Character Golem = new Character(4);
+            Character Anchor = new Anchor();
+            Character Golem = new Golem();
+            Character Flame = new FlameDemon();
             enemyList.Add(footSoldier);
             enemyList.Add(Archer);
             enemyList.Add(Anchor);
             enemyList.Add(Golem);
+            enemyList.Add(Flame);
         }
         public Character getEnemy()
         {

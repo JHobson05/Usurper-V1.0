@@ -25,11 +25,19 @@ namespace Usurper_V1._0
         MenuState menuState;
         SelectState selectState;
 
+        //Variables
+        private int BattleID;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+        }
+
+        public  void SetAct(int id)
+        {
+            BattleID = id;
         }
 
         protected override void Initialize()
@@ -82,6 +90,8 @@ namespace Usurper_V1._0
             moveList.Moves[13].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[13].SpriteString);
             enemyList.enemyList[1].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             enemyList.enemyList[0].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
+            enemyList.enemyList[3].Sprite = Content.Load<Texture2D>(enemyList.enemyList[3].getSpriteString);
+            enemyList.enemyList[4].Sprite = Content.Load<Texture2D>(enemyList.enemyList[4].getSpriteString);
             Back = Content.Load<Texture2D>("ExitIcon");
             MenuBar = Content.Load<Texture2D>("MenuBar");
             MoveBarSprite = Content.Load<Texture2D>("MoveBar");

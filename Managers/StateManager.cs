@@ -43,5 +43,10 @@ namespace Usurper_V1._0
             selected = state.Id;
         }
         public void Clear() { states.Clear(); }
+        public void SetAct(int id,Game1 g)
+        {
+            states[StateID.battle].battleID = id;
+            states[StateID.battle].Set(g);
+        }
     }
 }

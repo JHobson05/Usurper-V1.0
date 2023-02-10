@@ -8,6 +8,7 @@ namespace Usurper_V1._0
     public abstract class State
     {
         private int id;
+        public int battleID;
 
         public State(int id)
         {
@@ -22,5 +23,7 @@ namespace Usurper_V1._0
         public abstract void Initialize(Game1 g);
         public abstract void Update(GameTime gt, Game1 g);
         public abstract void Draw(Game1 g);
+
+        public abstract void Set(Game1 g);
     }
 }

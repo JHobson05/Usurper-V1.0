@@ -25,5 +25,9 @@ namespace Usurper_V1._0
         public const int flamethrower = 15;
         public const int fireball = 16;
         public const int searingSlash = 17;
+        public const int rockSlide = 18;
+        public const int earhquake = 19;
+        public const int grounded = 20;
+        public const int bodySlam = 21;
     }
 }
