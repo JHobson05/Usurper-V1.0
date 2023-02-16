@@ -10,6 +10,8 @@ namespace Usurper_V1._0
         Vector2 B1,B2,B3,B4,B5;
         Button F1, F2, Exit;
         MouseState mState;
+        bool playerWin, enemyWin;
+        string pWin = "Congratulations! You won the last battle.", eWin = "Unlucky! You lost the last battle.";
         public SelectState (Game1 g) : base(StateID.select)
         {
 
@@ -33,6 +35,14 @@ namespace Usurper_V1._0
         public override void Update(GameTime gt, Game1 g)
         {
             mState = Mouse.GetState();
+            if(WinID == 2)
+            {
+                playerWin = true;
+            }
+            else if(WinID == 1)
+            {
+                enemyWin = true;
+            }
             Exit.CheckHover(mState);
             if (Exit.checkPressed(mState))
             {
@@ -57,6 +67,14 @@ namespace Usurper_V1._0
             g.GraphicsDevice.Clear(Color.RosyBrown);
             g._spriteBatch.Begin();
             baseDraw(g);
+            if (playerWin)
+            {
+                g._spriteBatch.DrawString(g.sFont, pWin, new Vector2(200, 170), Color.White);
+            }
+            else if (enemyWin)
+            {
+                g._spriteBatch.DrawString(g.sFont, eWin, new Vector2(200, 170), Color.White);
+            }
             g._spriteBatch.End();
         }
 

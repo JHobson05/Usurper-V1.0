@@ -66,6 +66,13 @@ namespace Usurper_V1._0
             Alive = false;
         }
 
+        public void ResetCharacter()
+        {
+            hp = maxHp;
+            activeAbility = 0;
+            Alive = true;
+        }
+
         public string Name{ get { return name; } }
         public string Type { get { return type; } }
 

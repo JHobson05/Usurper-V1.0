@@ -8,7 +8,7 @@ namespace Usurper_V1._0
     public abstract class State
     {
         private int id;
-        public int battleID;
+        public int battleID,WinID;
 
         public State(int id)
         {

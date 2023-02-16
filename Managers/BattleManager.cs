@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace Usurper_V1._0
@@ -16,12 +14,29 @@ namespace Usurper_V1._0
             AI = e;
         }
 
+        public void partyUpdate(Party p,Party e)
+        {
+            party = p;
+            AI = e;
+        }
+
         //This method is a function as the integer returned is used to figure out what type of move was used by the AI.
         //This subroutine acts as a simple AI for the game to allow the enemy to randomly select attacks and targets.
-        public int EasyAIMove(int Attacker,MoveList movelist)
+        public int EasyAIMove(int Attacker, MoveList movelist)
         {
-            int temp = random.Next(0,4);
-            int target = random.Next(0, 2);
+            int temp = random.Next(0, 4),target;
+            if (!party.party[0].alive)
+            {
+                target = 1;
+            }
+            else if (!party.party[1].alive)
+            {
+                target = 0;
+            }
+            else
+            { 
+                target = random.Next(0, 2);
+            }
             int MoveID = AI.party[Attacker].Moves[temp];
             AttackCalculator(Attacker, MoveID, target, movelist,AI,party);
             return MoveID;
@@ -50,6 +65,37 @@ namespace Usurper_V1._0
             if (value < 7) ability = true;
             else ability = false;
             return ability;
+        }
+
+        //This subroutine returns an integer determining whether the fight has ended and if it has, which team won.
+        public int checkWin()
+        {
+            int Num = 0, p=0, e=0;
+            //Players party.
+            for(int i = 0; i < 2; i++)
+            {
+                if (party.party[i].alive)
+                {
+                    p++;
+                }
+            }
+            if (p <= 0)
+            {
+                Num = 1;
+            }
+            //AIs party.
+            for (int i = 0; i < 1; i++)
+            {
+                if (AI.party[i].alive)
+                {
+                    e++;
+                }
+            }
+            if (e <= 0)
+            {
+                Num = 2;
+            }
+            return Num;
         }
 
         //This subroutine determines which ability is applied if an ability is successful. The ability can be applied to either the attacker or victim.
@@ -115,9 +161,13 @@ namespace Usurper_V1._0
             {
                 //Arc web offensive ability
                 abilityDamage = 10 * atkParty.party[Attacker].SpDef;
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 1; i++)
                 {
                     atkParty.party[i].takeDamage(abilityDamage);
+                    if (atkParty.party[i].HP < 0)
+                    {
+                        atkParty.party[i].killCharacter();
+                    }
                 }
             }
             //Static charge defensive ability.

@@ -13,7 +13,7 @@ namespace Usurper_V1._0
         Party enemies;
         Stack Turns, Turns2;
         Button Move1,Move2,Move3,Move4,Enemy,Enemy2,PTurn;
-        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn,gPause;
+        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn,gPause,PlayerWin,EnemyWin;
         Vector2 B1, B2, B3,B4,B5,B6,B7,B8,B9;
         int cCharacter,aCharacter, cEnemy,moveIndex,eMove,aEnemy,enemyTemp,QueueSize =2;
         float timer;
@@ -30,11 +30,26 @@ namespace Usurper_V1._0
             if (battleID == 1)
             {
                 enemies = new Party(list.enemyList[3]);
+                characterReset(g);
+                bMgr.partyUpdate(g.party, enemies);
             }
             else if (battleID == 2)
             {
                 enemies = new Party(list.enemyList[4]);
+                characterReset(g);
+                bMgr.partyUpdate(g.party, enemies);
             }
+            EnemyWin = false;
+            PlayerWin = false;
+
+        }
+        public void characterReset(Game1 g)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                g.party.party[i].ResetCharacter();
+            }
+            enemies.party[0].ResetCharacter();
         }
 
         public override void Initialize(Game1 g)
@@ -81,6 +96,16 @@ namespace Usurper_V1._0
         {
             if (!gPause)
             {
+                if (PlayerWin)
+                {
+                    g.stateMgr.SetWin(1, g);
+                    g.setSelect();
+                }
+                else if (EnemyWin)
+                {
+                    g.stateMgr.SetWin(2, g);
+                    g.setSelect();
+                }
                 mState = Mouse.GetState();
                 // This if statement is used to ensure that things are only registered as one click when the mouse is held down.
                 if (mState.LeftButton == ButtonState.Released)
@@ -97,12 +122,13 @@ namespace Usurper_V1._0
                 //}
                 if (enemyturn)
                 {
-                    aEnemy = 0;
+                    //aEnemy = 0;
                     //if (!enemies.party[aEnemy].alive)
                     //{
                     //    aEnemy = (aEnemy + 1) % 2;
                     //}
-                    eMove = bMgr.EasyAIMove(aEnemy, moveList);
+                    eMove = bMgr.EasyAIMove(0, moveList);
+                    checkEnd();
                     enemyturn = false;
                     moveChosen = false;
                 }
@@ -127,6 +153,7 @@ namespace Usurper_V1._0
                     if (Attack && moveChosen)
                     {
                         bMgr.AttackCalculator(aCharacter, moveIndex, cEnemy, moveList,g.party,enemies);
+                        checkEnd();
                         if (cCharacter == 0)
                         {
                             Turns.push(moveIndex, cCharacter, cEnemy);
@@ -221,6 +248,23 @@ namespace Usurper_V1._0
         {
             queue.Enqueue(0);
             queue.Enqueue(1);
+        }
+
+        public void checkEnd()
+        {
+            int Num = bMgr.checkWin();
+            if (Num == 0)
+            {
+                return;
+            }
+            else if (Num == 1)
+            {
+                PlayerWin = true;
+            }
+            else
+            {
+                EnemyWin = true;
+            }
         }
 
         public void PlayerMove(Game1 g)

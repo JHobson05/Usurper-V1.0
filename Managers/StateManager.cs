@@ -48,5 +48,10 @@ namespace Usurper_V1._0
             states[StateID.battle].battleID = id;
             states[StateID.battle].Set(g);
         }
+        public void SetWin(int id, Game1 g)
+        {
+            states[StateID.select].WinID = id;
+            states[StateID.select].Set(g);
+        }
     }
 }

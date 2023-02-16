@@ -26,7 +26,7 @@ namespace Usurper_V1._0
         SelectState selectState;
 
         //Variables
-        private int BattleID;
+        private int BattleID,WinID;
 
         public Game1()
         {
@@ -38,6 +38,11 @@ namespace Usurper_V1._0
         public  void SetAct(int id)
         {
             BattleID = id;
+        }
+
+        public void SetWin(int id)
+        {
+            WinID = id;
         }
 
         protected override void Initialize()

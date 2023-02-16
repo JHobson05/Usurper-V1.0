@@ -13,7 +13,7 @@ namespace Usurper_V1._0
             spAtk = 8;
             def = 5;
             spDef =5;
-            maxHp = 250; hp = maxHp;
+            maxHp = 350; hp = maxHp;
             spriteString = "pixil-frame-0";
             name = "Frost Wizard";
             type = "Frost";

@@ -13,7 +13,7 @@ namespace Usurper_V1._0
             spAtk = 5;
             def = 6;
             spDef = 5;
-            maxHp = 300; hp = maxHp;
+            maxHp = 450; hp = maxHp;
             type = "Electric";
             name = "Lightning Knight";
             spriteString = "LightningKnight";
