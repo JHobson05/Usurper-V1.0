@@ -10,8 +10,11 @@ namespace Usurper_V1._0
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
         public SpriteFont Font,sFont;
-        public FrostWizard character1;
-        public LightningKnight character2;
+        //Variables
+        public CharacterList characters;
+        public int partyID =0;
+        //public FrostWizard character1;
+        //public LightningKnight character2;
         public int Height = 360;
         public int width = 640;
         public EnemyList enemyList = new EnemyList();
@@ -45,15 +48,31 @@ namespace Usurper_V1._0
             WinID = id;
         }
 
+        public void updateCharacters(int index)
+        {
+            partyID = index;
+            if(partyID == 0)
+            {
+                party.party[0] = characters.List[0];
+                party.party[1] = characters.List[1];
+            }
+            else if(partyID == 1)
+            {
+                party.party[0] = characters.List[0];
+                party.party[1] = characters.List[2];
+            }
+        }
+
         protected override void Initialize()
         {
             Window.Title = "Usurper";
             _graphics.PreferredBackBufferHeight = Height;
             _graphics.PreferredBackBufferWidth = width;
             _graphics.ApplyChanges();
-            character1 = new FrostWizard();
-            character2 = new LightningKnight();
-            party = new Party(character1,character2);
+            characters = new CharacterList();
+            //character1 = new FrostWizard();
+            //character2 = new LightningKnight();
+            party = new Party(characters.List[0],characters.List[1]);
             battleState = new BattleState(enemyList, this,moveList);
             menuState = new MenuState(this);
             selectState = new SelectState(this);
@@ -84,8 +103,9 @@ namespace Usurper_V1._0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Font = Content.Load<SpriteFont>("gameFont");
             sFont = Content.Load<SpriteFont>("SmallGameFont");
-            character1.Sprite = Content.Load<Texture2D>(character1.getSpriteString);
-            character2.Sprite = Content.Load<Texture2D>(character2.getSpriteString);
+            characters.List[0].Sprite = Content.Load<Texture2D>(characters.List[0].getSpriteString);
+            characters.List[1].Sprite = Content.Load<Texture2D>(characters.List[1].getSpriteString);
+            characters.List[2].Sprite = Content.Load<Texture2D>(characters.List[2].getSpriteString);
             moveList.Moves[0].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[0].SpriteString);
             moveList.Moves[1].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[1].SpriteString);
             moveList.Moves[5].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[5].SpriteString);
@@ -93,6 +113,10 @@ namespace Usurper_V1._0
             moveList.Moves[8].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[8].SpriteString);
             moveList.Moves[9].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[9].SpriteString);
             moveList.Moves[13].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[13].SpriteString);
+            moveList.Moves[16].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[16].SpriteString);
+            moveList.Moves[17].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[17].SpriteString);
+            moveList.Moves[15].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[15].SpriteString);
+            moveList.Moves[4].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[4].SpriteString);
             enemyList.enemyList[1].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             enemyList.enemyList[0].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             enemyList.enemyList[3].Sprite = Content.Load<Texture2D>(enemyList.enemyList[3].getSpriteString);

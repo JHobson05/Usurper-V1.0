@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Usurper_V1._0
@@ -18,7 +17,12 @@ namespace Usurper_V1._0
             "\nthe teammates of the character who is afflicted with the ability. The damage \nis calculated based off the afflicted characters Special stats. " +
             "\nStatic Charge deals a small amount of damage to any character who attacks a \ncharacter  with this ability active. The damage is calculated \nbased off " +
             "the defenders Special stats.";
-        string Instructions2 = "Fire type has the ... offensive ability and the ... defensive ability\n .";
+        string Instructions2 = "Fire type has the offensive ability to burn enemies \n and the defensive ability to burn enemies upon being attacked.\n" +
+            "The damage for both of these is based of the users physical atk and defense stats.\n So far in the game there are 2 teams and 2 fights available. \n" +
+            "Team 1 consists of a frost wizard and a lightning knight. Team 2 consists of\n A frost wizard and a pyromancer. Team 2 utilises  the debuffing effects\n" +
+            "of frostbite from the frostwizard to amplify the high base physical damage \n of the pyromancers fire attacks. Team 1 has a strong damage over time \n" +
+            "play style alongside high survivability due to the lightning knight.\n The 2 bosses are ACT 1 , The Golem, and ACT 2 , The Flame Demon.\n" +
+            "This was a computer science project created by Joe Hobson.\n Enjoy the game and thank you for playing.";
         Vector2 B1, B2,B3,B4,B5;
         Button play, instructions,Exit,instructions2,rInstruction;
         MouseState mstate;

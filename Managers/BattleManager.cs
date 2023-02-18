@@ -268,6 +268,7 @@ namespace Usurper_V1._0
             if (party.party[Victim].HP < 0)
             {
                 party.party[Victim].killCharacter();
+                party.party[Victim].Colour = Color.Black;
             }
         }
     }

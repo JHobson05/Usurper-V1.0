@@ -53,7 +53,7 @@ namespace Usurper_V1._0
             blizzard = new Move(MoveID.blizzard,"spAtk","Frost","BlizzardIcon","Blizzard",20,true,2);
             mightyShot = new Move(MoveID.mightyShot,"atk","Normal",null,"Mighty Shot",40,false,0);
             barrage = new Move(MoveID.barrage,"atk","Normal",null,"Barrage",35,false,0);
-            gut = new Move(MoveID.gut,"spAtk","Normal",null,"Gut",50,false,0);
+            gut = new Move(MoveID.gut,"spAtk","Normal","GutIcon","Gut",50,false,0);
             iceBeam = new Move(MoveID.iceBeam,"spAtk","Frost", "IceBeamIcon","Ice Beam",60,true,1);
             frozenFury = new Move(MoveID.frozenFury,"spAtk","Frost","FrozenFuryIcon","Frozen Fury",80, false,0);
             flameArrow = new Move(MoveID.flameArrow,"spAtk","Fire",null,"Flame Arrow",30,true,5);
@@ -64,9 +64,9 @@ namespace Usurper_V1._0
             soldiersShout = new Move(MoveID.soldiersShout,"spAtk","Normal",null,"Soldiers Shout",0,true,0);
             staticBuildup = new Move(MoveID.staticBuildup, "spAtk", "Electric", "StaticBuildupIcon", "Static Buildup", 0, true, 4);
             lightningLance = new Move(MoveID.lightningLance, "atk", "Electric", null, "Lightning Lance", 60, true, 3);
-            flamethrower = new Move(MoveID.flamethrower, "atk", "Fire", null, "Flamethrower", 65, false, 0);
-            fireball = new Move(MoveID.fireball, "spAtk", "Fire", null, "Fireball", 40, true, 5);
-            searingSlash = new Move(MoveID.searingSlash, "atk", "Fire", null, "searing Slash", 50, true, 6);
+            flamethrower = new Move(MoveID.flamethrower, "atk", "Fire", "FlameThrowerIcon", "Flamethrower", 65, false, 0);
+            fireball = new Move(MoveID.fireball, "spAtk", "Fire", "FireBombIcon", "Fire Bomb", 40, true, 5);
+            searingSlash = new Move(MoveID.searingSlash, "atk", "Fire", "SearingSlashIcon", "searing Slash", 50, true, 6);
             rockSlide = new Move(MoveID.rockSlide, "atk","Normal",null,"Rock Slide",55,false,0);
             earthquake = new Move(MoveID.earhquake, "atk", "Normal", null, "Earthquake", 75, false, 0);
             grounded = new Move(MoveID.grounded, "spAtk", "Normal", null, "Grounded", 0, false, 0);

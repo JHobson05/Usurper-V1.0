@@ -13,5 +13,6 @@ namespace Usurper_V1._0
         public const int dElectric = 4;
         public const int aFire = 5;
         public const int dFire = 6;
+        public const int dead = 10;
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Usurper_V1._0
 {
     public static class CharacterID
@@ -17,5 +14,6 @@ namespace Usurper_V1._0
         public const int Anchor = 7;
         public const int Golem = 8;
         public const int FlameDemon = 9;
+        public const int Pyromancer = 10;
     }
 }

@@ -39,6 +39,8 @@ namespace Usurper_V1._0
                 characterReset(g);
                 bMgr.partyUpdate(g.party, enemies);
             }
+            g.party.party[0].setPosition(B4);
+            g.party.party[1].setPosition(B7);
             EnemyWin = false;
             PlayerWin = false;
 
@@ -84,8 +86,8 @@ namespace Usurper_V1._0
             Move4 = new Button(B6, 32, 32, 3);
             //Enemy2 = new Button(B8, 32, 32, 0);
             PTurn = new Button(B9, 32, 32, 0);
-            g.party.party[0].setPosition(B4);
-            g.party.party[1].setPosition(B7);
+            //g.party.party[0].setPosition(B4);
+            //g.party.party[1].setPosition(B7);
             //g.enemyList.enemyList[1].setPosition(B3);
             //g.enemyList.enemyList[0].setPosition(B8);
             g.enemyList.enemyList[3].setPosition(B8);
@@ -183,6 +185,10 @@ namespace Usurper_V1._0
                         if (!g.party.party[cCharacter].alive)
                         {
                             cCharacter = (cCharacter + 1) % 2;
+                            enemyturn = true;
+                            gPause = true;
+                            timer = 0;
+                            moveChosen = true;
                         }
                     }
                 }
