@@ -11,12 +11,14 @@ namespace Usurper_V1._0
         MouseState mState;
         EnemyList list;
         Party enemies;
+        TurnInfo turnInfo;
         Stack Turns, Turns2;
         Button Move1,Move2,Move3,Move4,Enemy,Enemy2,PTurn;
-        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn,gPause,PlayerWin,EnemyWin;
+        bool Attack,enemySelect,enemyChosen,moveChosen, mReleased,enemyturn,gPause,PlayerWin,EnemyWin,turnTaken = false;
         Vector2 B1, B2, B3,B4,B5,B6,B7,B8,B9;
         int cCharacter,aCharacter, cEnemy,moveIndex,eMove,aEnemy,enemyTemp,QueueSize =2;
         float timer;
+        string lastTurn;
         public BattleState (EnemyList list,Game1 g,MoveList moveList) : base(StateID.battle)
         {
             this.moveList = moveList;
@@ -41,6 +43,7 @@ namespace Usurper_V1._0
             }
             g.party.party[0].setPosition(B4);
             g.party.party[1].setPosition(B7);
+            turnTaken = false;
             EnemyWin = false;
             PlayerWin = false;
 
@@ -129,10 +132,19 @@ namespace Usurper_V1._0
                     //{
                     //    aEnemy = (aEnemy + 1) % 2;
                     //}
-                    eMove = bMgr.EasyAIMove(0, moveList);
+                    turnInfo = bMgr.EasyAIMove(0, moveList);
+                    if (!turnInfo.Dodged)
+                    {
+                        lastTurn = (turnInfo.Attacker + " used the move " + turnInfo.Move + " and dealt " + turnInfo.Damage + " damage to " + turnInfo.Victim + ".");
+                    }
+                    else
+                    {
+                        lastTurn = (turnInfo.Attacker + " used the move " + turnInfo.Move + " and missed dealing 0 damage to "+ turnInfo.Victim +".");
+                    }
                     checkEnd();
                     enemyturn = false;
                     moveChosen = false;
+                    turnTaken = true;
                 }
                 if ((mState.LeftButton == ButtonState.Pressed) && mReleased)
                 {
@@ -154,8 +166,17 @@ namespace Usurper_V1._0
 
                     if (Attack && moveChosen)
                     {
-                        bMgr.AttackCalculator(aCharacter, moveIndex, cEnemy, moveList,g.party,enemies);
+                        turnInfo = bMgr.AttackCalculator(aCharacter, moveIndex, cEnemy, moveList,g.party,enemies);
+                        if (!turnInfo.Dodged)
+                        {
+                            lastTurn = (turnInfo.Attacker + " used the move " + turnInfo.Move + " and dealt " + turnInfo.Damage + " damage.");
+                        }
+                        else
+                        {
+                            lastTurn = (turnInfo.Attacker + " used the move " + turnInfo.Move + " and missed dealing 0 damage");
+                        }
                         checkEnd();
+                        turnTaken = true;
                         if (cCharacter == 0)
                         {
                             Turns.push(moveIndex, cCharacter, cEnemy);
@@ -224,6 +245,10 @@ namespace Usurper_V1._0
             {
                 g._spriteBatch.DrawString(g.Font, "<--", B9, PTurn.Dynamic);
             }
+            if (turnTaken)
+            {
+                g._spriteBatch.DrawString(g.sFont, lastTurn, new Vector2(30, 250), Color.White);
+            }
             g._spriteBatch.End();
         }
 
@@ -239,7 +264,7 @@ namespace Usurper_V1._0
             g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[0]].GetIconSprite, B1, Color.White);
             g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[1]].GetIconSprite, B2, Color.White);
             g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[2]].GetIconSprite, B5, Color.White);
-            //g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[3]].GetIconSprite, B6, Color.White);
+            g._spriteBatch.Draw(moveList.Moves[g.party.party[cCharacter].Moves[3]].GetIconSprite, B6, Color.White);
             //g._spriteBatch.Draw(enemies.party[1].Sprite, enemies.party[1].getPosition, enemies.party[1].Colour);
             //g._spriteBatch.Draw(g.enemyList.enemyList[1].Sprite, g.enemyList.enemyList[1].getPosition, Color.White);
             //g._spriteBatch.DrawString(g.Font, g.enemyList.enemyList[cCharacter].Name, new Vector2(450, 0), Color.White);

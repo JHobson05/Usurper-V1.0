@@ -117,6 +117,7 @@ namespace Usurper_V1._0
             moveList.Moves[17].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[17].SpriteString);
             moveList.Moves[15].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[15].SpriteString);
             moveList.Moves[4].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[4].SpriteString);
+            moveList.Moves[14].SetIconSprite = Content.Load<Texture2D>(moveList.Moves[14].SpriteString);
             enemyList.enemyList[1].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             enemyList.enemyList[0].Sprite = Content.Load<Texture2D>(enemyList.enemyList[1].getSpriteString);
             enemyList.enemyList[3].Sprite = Content.Load<Texture2D>(enemyList.enemyList[3].getSpriteString);

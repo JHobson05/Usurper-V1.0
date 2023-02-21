@@ -63,13 +63,13 @@ namespace Usurper_V1._0
             shieldBash = new Move(MoveID.shieldBash,"atk","Normal",null,"Shield Bash", 25, true,0);
             soldiersShout = new Move(MoveID.soldiersShout,"spAtk","Normal",null,"Soldiers Shout",0,true,0);
             staticBuildup = new Move(MoveID.staticBuildup, "spAtk", "Electric", "StaticBuildupIcon", "Static Buildup", 0, true, 4);
-            lightningLance = new Move(MoveID.lightningLance, "atk", "Electric", null, "Lightning Lance", 60, true, 3);
+            lightningLance = new Move(MoveID.lightningLance, "atk", "Electric", "LightningLanceIcon", "Lightning Lance", 60, true, 3);
             flamethrower = new Move(MoveID.flamethrower, "atk", "Fire", "FlameThrowerIcon", "Flamethrower", 65, false, 0);
             fireball = new Move(MoveID.fireball, "spAtk", "Fire", "FireBombIcon", "Fire Bomb", 40, true, 5);
             searingSlash = new Move(MoveID.searingSlash, "atk", "Fire", "SearingSlashIcon", "searing Slash", 50, true, 6);
             rockSlide = new Move(MoveID.rockSlide, "atk","Normal",null,"Rock Slide",55,false,0);
             earthquake = new Move(MoveID.earhquake, "atk", "Normal", null, "Earthquake", 75, false, 0);
-            grounded = new Move(MoveID.grounded, "spAtk", "Normal", null, "Grounded", 0, false, 0);
+            grounded = new Move(MoveID.grounded, "spAtk", "Normal", null, "Grounded", 10, true, 7);
             bodySlam = new Move(MoveID.bodySlam, "atk", "Normal", null, "Body Slam", 60, false, 0);
             Moves = new List<Move>();
             Moves.Add(icicleRain);

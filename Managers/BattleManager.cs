@@ -20,10 +20,10 @@ namespace Usurper_V1._0
             AI = e;
         }
 
-        //This method is a function as the integer returned is used to figure out what type of move was used by the AI.
         //This subroutine acts as a simple AI for the game to allow the enemy to randomly select attacks and targets.
-        public int EasyAIMove(int Attacker, MoveList movelist)
+        public TurnInfo EasyAIMove(int Attacker, MoveList movelist)
         {
+            TurnInfo turn;
             int temp = random.Next(0, 4),target;
             if (!party.party[0].alive)
             {
@@ -38,8 +38,8 @@ namespace Usurper_V1._0
                 target = random.Next(0, 2);
             }
             int MoveID = AI.party[Attacker].Moves[temp];
-            AttackCalculator(Attacker, MoveID, target, movelist,AI,party);
-            return MoveID;
+            turn =AttackCalculator(Attacker, MoveID, target, movelist,AI,party);
+            return turn;
         }
 
         //This subroutine determines whether the attack will be a low regular high or crit roll. To land a critical hit there is a 1 in 16 chance.
@@ -135,6 +135,11 @@ namespace Usurper_V1._0
                     atkParty.party[Attacker].activeAbility = 6;
                     atkParty.party[Attacker].Colour = Color.OrangeRed;
                 }
+                else if(element == 7)
+                {
+                    atkParty.party[Attacker].activeAbility = 0;
+                    atkParty.party[Attacker].Colour = Color.White;
+                }
             }
             else return;
         }
@@ -142,15 +147,17 @@ namespace Usurper_V1._0
         /*This is the player attack calculator.The calculator is only used to damage targets, things like AI are seperate subroutines.
         The calculator determines whether abilities are applied a move is dodged and
         whether the attack is a high or low roll. */
-        public void AttackCalculator(int Attacker,int Index,int Victim,MoveList movelist,Party atkParty,Party enemyParty)
+        public TurnInfo AttackCalculator(int Attacker,int Index,int Victim,MoveList movelist,Party atkParty,Party enemyParty)
         {
             Move attack = movelist.Moves[Index];
             double Crit = CritRoll();
-            double damage, abilityDamage=0;
+            double damage=0, abilityDamage=0;
             bool ability, dodged = false;
+            TurnInfo Turn = new TurnInfo(damage, dodged, attack.Name, enemyParty.party[Victim].Name, atkParty.party[Attacker].Name);
             if (enemyParty.party[Victim].HP <= 0)
             {
-                return;
+                Turn.updateInfo(damage, dodged, attack.Name, enemyParty.party[Victim].Name, atkParty.party[Attacker].Name);
+                return Turn;
             }
             ability =Ability();
             if (ability)
@@ -183,13 +190,15 @@ namespace Usurper_V1._0
                 if (dodge <= 70)
                 {
                     dodged = true;
-                    return;
+                    Turn.updateInfo(damage, dodged, attack.Name, enemyParty.party[Victim].Name, atkParty.party[Attacker].Name);
+                    return Turn;
                 }
             }
             else if(dodge <= 10)
             {
                 dodged = true;
-                return;
+                Turn.updateInfo(damage, dodged, attack.Name, enemyParty.party[Victim].Name, atkParty.party[Attacker].Name);
+                return Turn;
             }
             if(attack.AtkType == "atk")
             {
@@ -225,6 +234,8 @@ namespace Usurper_V1._0
             {
                 enemyParty.party[Victim].killCharacter();
             }
+            Turn.updateInfo(damage, dodged, attack.Name, enemyParty.party[Victim].Name, atkParty.party[Attacker].Name);
+            return Turn;
         }
 
         //Backup code for old method of calculation. No longer used.
