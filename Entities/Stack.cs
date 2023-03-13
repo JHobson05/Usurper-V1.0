@@ -8,6 +8,7 @@ namespace Usurper_V1._0
 {
     class Stack
     {
+        //Custom stack data type used for the repeat last move feature.
         private Turn[] stack;
         private int pointer,Capacity;
         

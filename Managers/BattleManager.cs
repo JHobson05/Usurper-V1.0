@@ -194,6 +194,7 @@ namespace Usurper_V1._0
                     return Turn;
                 }
             }
+            //Regular dodge chance
             else if(dodge <= 10)
             {
                 dodged = true;
@@ -216,16 +217,19 @@ namespace Usurper_V1._0
             }
             else
             {
+                //Code runs if move is special attack
                 damage = attack.BasePower * atkParty.party[Attacker].SpAtk;
                 damage = damage / enemyParty.party[Victim].SpDef;
             }
             if(attack.Type == atkParty.party[Attacker].Type)
             {
+                //Same type attack bonus.
                 damage = Math.Round(damage * 1.2);
             }
             damage = Math.Round(damage * Crit);
             if (dodged)
             {
+                //This code is kind of like exception handling to try and make sure no damage is done .
                 damage = 0;
             }
             
@@ -234,6 +238,7 @@ namespace Usurper_V1._0
             {
                 enemyParty.party[Victim].killCharacter();
             }
+            //updateInfo provides the battlestate with all the turn info. This is used to display text to the screen.
             Turn.updateInfo(damage, dodged, attack.Name, enemyParty.party[Victim].Name, atkParty.party[Attacker].Name);
             return Turn;
         }

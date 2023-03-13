@@ -5,6 +5,7 @@ namespace Usurper_V1._0
 {
     public class StateManager
     {
+        //The stateManager stores all the states(Forms) and provides subroutines to access the states within.
         public List<State> states = new List<State>();
         public int selected;
         public int Count 

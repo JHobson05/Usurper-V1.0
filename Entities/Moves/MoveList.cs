@@ -8,7 +8,7 @@ namespace Usurper_V1._0
           Similar to the state system I am using a class to contain the moves.
           Each character will instead contain an array with id references to the moves it has access to. 
           When a move is needed it will use the id to access the move via this class. Originally each move was its own subclass
-          but that has been changed to have each one instantiated as just a move inside the list. There are exceptions for moves which dont attack enemies but are instead applying buffs or debuffs.
+          but that has been changed to have each one instantiated as just a move inside the list.
         */
         //private IcicleRain icicleRain;
         //private Blizzard blizzard;

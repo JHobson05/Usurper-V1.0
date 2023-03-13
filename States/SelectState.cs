@@ -104,6 +104,7 @@ namespace Usurper_V1._0
 
         public void baseDraw(Game1 g)
         {
+            //Draws all the constant stuff to the screen.
             g._spriteBatch.Draw(g.Back,B1,Exit.Dynamic);
             g._spriteBatch.Draw(g.MenuBar, B2, F1.Dynamic);
             g._spriteBatch.DrawString(g.Font, "ACT 1", new Vector2(27,37), F1.Dynamic);

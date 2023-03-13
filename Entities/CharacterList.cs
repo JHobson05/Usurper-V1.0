@@ -6,6 +6,7 @@ namespace Usurper_V1._0
 {
     public class CharacterList
     {
+        //This class is used to access characters through an index that is the same throughout the entire program.
         public List<Character> List;
         private FrostWizard frostWizard;
         private LightningKnight lightningKnight;

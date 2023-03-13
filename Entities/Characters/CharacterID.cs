@@ -3,7 +3,7 @@ namespace Usurper_V1._0
 {
     public static class CharacterID
     {
-        //This class contains unique IDs for each subclass of character.
+        //This class contains unique IDs for each subclass of character. Used to ensure consistency throughout code.
         public const int FrostWizard = 0;
         public const int FrostKnight = 1;
         public const int LightningWizard = 2;

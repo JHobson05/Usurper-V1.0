@@ -5,6 +5,7 @@ namespace Usurper_V1._0
 {
     public class BattleState : State
     {
+        //The BattleState contains all the code and classes needed during the battle or gameplay portion of the game.
         BattleManager bMgr;
         MoveList moveList;
         Queue PlayerOrder, AIOrder;
@@ -27,6 +28,7 @@ namespace Usurper_V1._0
             bMgr = new BattleManager(g.party,enemies);
         }
 
+        //When a battle is selected on the Selectstate this code is run initially.
         public override void Set(Game1 g)
         {
             if (battleID == 1)
@@ -48,6 +50,7 @@ namespace Usurper_V1._0
             PlayerWin = false;
 
         }
+        //Run as part of Set subroutine
         public void characterReset(Game1 g)
         {
             for (int i = 0; i < 2; i++)
@@ -332,6 +335,7 @@ namespace Usurper_V1._0
             }
             if (PTurn.checkPressed(mState) && !Turns.isEmpty())
             {
+                //This is for the repeat turn button.
                 Attack = true;
                 //enemySelect = true;
                 moveChosen = true;
