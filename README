@@ -1,0 +1,5 @@
+# Usurper-V1.0
+Monogame turn based rpg project.
+Important note is that monogame currently doesnt work very well on vs 2022 so downloading it on vs 2019 is a better idea.
+Some other things are that i downloaded a true type font of the internet to use. Access the gamefont class and there should be a comment
+an example font to change to. This will have no effect on the game other than the font will look different in the testing video.
